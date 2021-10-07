@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 357e4750eebf4d6418799afcc6b63e55, type: 3}
+  m_Name: EnemyPickupDestroyerData
+  m_EditorClassIdentifier: 
+  enemyName: Enemy pickup destroyer
+  enemyType: 0
+  description: shoots pickup destroyer lasers
+  scorePoints: 1
+  speed: 2
+  fireRate: 2
+  maxHealth: 1
+  weapons:
+  - {fileID: 8040156394465898705, guid: eca6aa6839d1bca41956de5b1b7e7186, type: 3}
+  explosionPrefab: {fileID: 4009486786716279570, guid: 1f31b95f6730ae94090726e549c29218,
+    type: 3}

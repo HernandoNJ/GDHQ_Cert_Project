@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3ef251bc-10b1-45d2-862d-435d2036d2d4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -8,8 +11,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41d34619c06946aebeba0ca1ee6d765b144200/51/266aeab5/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../GitHub/EGCProj_2021/Assets/Scripts/NpcController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Test22.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/PlayerTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/PlayerWeapons.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/ParallaxTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/SpaceShooter2D/Assets 29-06-2021/Assets/Scripts/Managers/LasersPoolManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1yrRbJg2zqE2UvmbibQOgIVB7vC" />
   <component name="ProjectViewState">
@@ -20,6 +27,8 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -53,6 +62,15 @@
       <updated>1633007794950</updated>
       <workItem from="1633007795310" duration="2831000" />
       <workItem from="1633095429548" duration="7685000" />
+      <workItem from="1633386242489" duration="71000" />
+      <workItem from="1633386361967" duration="144000" />
+      <workItem from="1633386594690" duration="34000" />
+      <workItem from="1633386735656" duration="7000" />
+      <workItem from="1633386827518" duration="6236000" />
+      <workItem from="1633442557257" duration="2951000" />
+      <workItem from="1633544198056" duration="8998000" />
+      <workItem from="1633559832076" duration="1050000" />
+      <workItem from="1633562625955" duration="9693000" />
     </task>
     <servers />
   </component>

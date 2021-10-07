@@ -1,0 +1,18 @@
+ 
+=== MonoBehaviour ===
+
+Disabling this lets you skip the GUI layout phase
+=> public bool useGUILayout { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+Clases abstractas vs. Interfaces: Cuándo usar cada una? – SharePoint ftw!
+Clases Abstractas
+http://sharepointforthewin.com/2016/12/14/clases-abstractas-vs-interfaces-cuando-usar-cada-una/#comment-18556
+
+Clase abstracta
+Se utiliza para indicar que una clase está incompleta y que sólo se va a utilizar como una clase base. No se podrá definir un nuevo objeto directamente de ella. Todas las clases que hereden de esta clase abstracta tomarán como base su comportamiento, formando parte de su esqueleto, lo podríamos definir como «ES».
+
+Interfaces
+Por definición, es una serie de métodos, propiedades, índices y eventos, que podemos definir, y que la clase que herede de ellos debe cumplir. Esto significa que clases que implementen esta interfaz pueden ser diferentes casi por completo, pero contener lo que la interfaz define. Por esto mismo, podemos decir que es un «PUEDE».
+
+Ser o Poder
+Queremos definir una serie de animales: un pato, un tiburón, un gorrión y un mono . Si lo pensamos, todos SON animales, por lo tanto esta será nuestra clase abstracta.
+
+public abstract class Animal
+{ private string nombre; public string Nombre { get; set;} }
+
+public interface IVolar { void Volar(); }
+public interface IAcuatico { void Nadar(); void RespirarBajoAgua(); }
+
+public class Pato : Animal, IVolar
+{
+    public Pato() { this.Nombre = "Luck"; }
+    public void Volar() { // Definir sus habilidades }
+}
+ 
+public class Tiburon : Animal, IAcuatico
+{
+    public Tiburon() { this.Nombre = "Bruce"; }
+    public void Nadar() { // Definir sus habilidades }
+    public void RespirarBajoAgua() { // Definir sus habilidades }
+}
+
+public class Gorrion : Animal, IVolar
+{ 
+    public Gorrion() { this.Nombre = "John"; }
+    public void Volar() { // Definir sus habilidades }
+}
+
+public class Mono : Animal { public Mono () { this.Nombre = "Moyo"; } }
+
+**********************************************
+
+
+****** When to use an abstract class vs. interface in C# *****
+
+https://www.infoworld.com/article/2928719/when-to-use-an-abstract-class-vs-interface-in-csharp.html#:~:text=The%20short%20answer%3A%20An%20abstract,take%20advantage%20of%20multiple%20interfaces. 
+
+An abstract class allows you to create functionality that subclasses can implement or override. An interface only allows you to define functionality, not implement it.
+Both can not be instantiated
+
+--- C# abstract class explained ---
+It can have constructors, fields, method definitions.
+The methods in an abstract class can be both abstract and concrete. 
+It allows to design components and specify some level of common functionality that must be implemented by derived classes.
+
+
+--- C# interface explained ---
+It is basically a contract — it doesn’t have any implementation.
+It can contain only method declarations
+It may only have declarations of events, methods, and properties
+The class that implements the interface should implement all its members
+
+
+--- Should I use an abstract class or an interface? ---
+Abstract classes provide you the flexibility to have certain concrete methods and some other methods that the derived classes should implement.
+An abstract class is a good choice if you have plans for future expansion – i.e. if a future expansion is likely in the class hierarchy.
+If you already have an abstract class in your hierarchy, you can’t add another—i.e., you can add an abstract class only if none are available.
+Define the method once, and reuse it as needed. 
+
+Interfaces force you to implement all the methods in the class that extends the interface. 
+If you would like to provide support for future expansion when using interfaces, you’ll need to extend the interface and create a new one.
+It is easy to add a new interface to the hierarchy if need be.
+You should use an interface if you want a contract on some behavior or functionality. 
+You should not use an interface if you need to write the same code for the interface methods. 
+Use interfaces to decouple your application’s code from specific implementations of it, or to restrict access to members of a certain type.
