@@ -10,9 +10,9 @@ scopes = {
 	"last_search.7F95D817" = "Collider"
 	"InspectorPreview.7F95D817" = "0"
 	"currentGroup.7F95D817" = "settings"
-	"last_search.83F126EB" = ""
+	"last_search.83F126EB" = "PlayerTest"
 	"InspectorPreview.83F126EB" = "0"
-	"currentGroup.83F126EB" = "asset"
+	"currentGroup.83F126EB" = "all"
 }
 providers = {
 	asset = {
@@ -52,6 +52,9 @@ providers = {
 	}
 }
 recentSearches = [
+	"MainMenu"
+	"t:script Player "
+	"p: "
 ]
 searchItemFavorites = [
 ]

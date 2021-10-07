@@ -11,12 +11,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Test22.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/PlayerTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/PlayerWeapons.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Test22.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/ParallaxTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/SpaceShooter2D/Assets 29-06-2021/Assets/Scripts/Managers/LasersPoolManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Weapons.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1yrRbJg2zqE2UvmbibQOgIVB7vC" />
   <component name="ProjectViewState">
@@ -71,6 +70,9 @@
       <workItem from="1633544198056" duration="8998000" />
       <workItem from="1633559832076" duration="1050000" />
       <workItem from="1633562625955" duration="9693000" />
+      <workItem from="1633645303124" duration="75000" />
+      <workItem from="1633645818912" duration="1000" />
+      <workItem from="1633645864545" duration="132000" />
     </task>
     <servers />
   </component>

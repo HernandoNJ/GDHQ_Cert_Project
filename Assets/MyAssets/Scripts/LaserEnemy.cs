@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserEnemy : MonoBehaviour
@@ -15,8 +13,8 @@ public class LaserEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var player = other.GetComponent<PlayerTest>();
-            if (player != null) player.Damage(1);
+            var player = other.GetComponent<Player>();
+            if (player != null) player.Damage(1); 
             Destroy(gameObject);
         }
         else if (other.CompareTag("Outbound")) Destroy(gameObject);

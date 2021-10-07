@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 112202726}
   - component: {fileID: 112202725}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 112202724}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db190f7036943d5459f9ce3c128e96b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f9edb1bbc403be408b0546ece5ab808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
@@ -389,7 +389,6 @@ GameObject:
   - component: {fileID: 250381563}
   - component: {fileID: 250381562}
   - component: {fileID: 250381561}
-  - component: {fileID: 250381565}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -478,29 +477,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &250381565
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250381560}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 284f0af5237ac934eac6de85292c7819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
-  ammoImage: {fileID: 0}
-  emptyAmmoImage: {fileID: 0}
-  livesImage: {fileID: 0}
-  thrusterBar: {fileID: 0}
-  ammoText: {fileID: 0}
-  scoreText: {fileID: 0}
-  gameOverText: {fileID: 0}
-  restartText: {fileID: 0}
-  livesSprites: []
-  playerScore: 0
 --- !u!1 &506581944
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +552,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 558140200}
-  - component: {fileID: 558140199}
   m_Layer: 0
   m_Name: EnemiesSpawnManager
   m_TagString: Untagged
@@ -584,25 +559,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &558140199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558140198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb4a577bd07890c4e81e8efd16c0ba11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  randomPowerup: 0
-  currentWaveIndex: 0
-  currentWaveNumber: 0
-  powerups: []
-  waves: []
-  enemySpawner: {fileID: 0}
-  isPlayerAlive: 0
 --- !u!4 &558140200
 Transform:
   m_ObjectHideFlags: 0
@@ -611,7 +567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558140198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.23698, y: 175.06807, z: -11.395202}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
