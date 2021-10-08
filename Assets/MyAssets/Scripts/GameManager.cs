@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,9 +6,12 @@ public class GameManager : MonoBehaviour
     
     private static GameManager instance;
     public static GameManager Instance => instance;
+    
     private int score;
-
+    private int currentWave;
     private string difficultyLevel;
+    
+    // TODO increase enemies speed in difficulty
     
     private void Awake()
     {
@@ -23,15 +25,11 @@ public class GameManager : MonoBehaviour
         player = GameObject.FindWithTag("Player");
     }
 
-    public string GetDifficulty()
-    {
-        return difficultyLevel;
-    }
+    public string GetDifficulty() => difficultyLevel;
 
-    public void StoreScore()
-    {
-        PlayerPrefs.SetInt("Score",score);
-    }
+    public void StoreScore() => PlayerPrefs.SetInt("Score",score);
+
+    public int SetNewWave() => currentWave++;
 
     public void GameOver()
     {

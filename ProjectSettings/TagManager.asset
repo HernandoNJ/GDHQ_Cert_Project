@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Laser
   - Outbound
+  - ActivateEnemies
   layers:
   - Default
   - TransparentFX

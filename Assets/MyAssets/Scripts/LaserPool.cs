@@ -6,6 +6,7 @@ public class LaserPool : MonoBehaviour
     public static LaserPool sharedInstance;
     public List<GameObject> pooledLasers;
     public GameObject laserPrefab;
+    public GameObject lasersParent;    
     public int lasersPoolAmount;
 
     private void Awake()
@@ -16,11 +17,14 @@ public class LaserPool : MonoBehaviour
     private void Start()
     {
         pooledLasers = new List<GameObject>();
-        GameObject tmpLaser;
+        SetNewLasers();
+    }
 
+    private void SetNewLasers()
+    {
         for (int i = 0; i < lasersPoolAmount; i++)
         {
-            tmpLaser = Instantiate(laserPrefab);
+            var tmpLaser = Instantiate(laserPrefab, lasersParent.transform, true);
             tmpLaser.SetActive(false);
             pooledLasers.Add(tmpLaser);
         }
