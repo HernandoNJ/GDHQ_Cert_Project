@@ -1,20 +1,28 @@
-using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private string enemyDifficulty;
-    private int health;
     [SerializeField] private float speed;
-
-    private void OnEnable()
-    {
-        enemyDifficulty = GameManager.Instance.GetDifficulty();
-    }
+    [SerializeField] private float shootCooldown;
+    [SerializeField] private bool isVulnerable;
+    [SerializeField] private bool shootEnabled;
+    [SerializeField] private GameObject laserPrefab;
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private Transform firePoint;
+    
+    private int health;
 
     private void Start()
     {
-        SetHealth();
+        // Increase speed with difficulty
+        speed += GameManager.Instance.GetCurrentDifficulty();
+        health = GameManager.Instance.GetCurrentDifficulty();
+
+        shootEnabled = true;
+        isVulnerable = false;
+        shootCooldown -= GameManager.Instance.GetCurrentDifficulty() * 0.2f;
+        InvokeRepeating(nameof(Shoot),0.1f,shootCooldown);
     }
 
     private void Update()
@@ -27,25 +35,52 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 
-    private void SetHealth()
+    private void Shoot()
     {
-        switch (enemyDifficulty)
-        {
-            case "Easy": health = 1; break;
-            case "Medium": health = 2; break;
-            case "Hard": health = 3; break;
-            default: health = 1; break;
-        }
+        if(shootEnabled) 
+            Instantiate(laserPrefab, firePoint.position, Quaternion.identity);
     }
-    
+
     public void Damage()
     {
+        if (isVulnerable == false) return;
+        
         health--;
-        if(health == 0) Destroy(gameObject);
+
+        if (health == 0)
+        {
+            StartExplosion();
+            Destroy(gameObject);
+        }
     }
+
+    private void DisableComponents()
+    {
+        speed = 0;
+        shootEnabled = false;
+        GetComponentInChildren<SpriteRenderer>().enabled = false;
+        GetComponent<Collider2D>().enabled = false;
+    }
+
+    private void StartExplosion()
+    {
+        var explosion = Instantiate(explosionPrefab, transform.position, quaternion.identity);
+        Destroy(explosion,0.5f);
+    } 
     
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.name == "ActivateEnemiesCollider")
+            isVulnerable = true;
 
-
-
+        else if (other.CompareTag("Player"))
+        {
+            var player = other.GetComponent<Player>();
+            if(player != null) player.Damage(1);
+            DisableComponents();
+            StartExplosion();
+            Destroy(gameObject,0.5f);
+        }
+        else if (other.gameObject.name == "LeftCollider") Destroy(gameObject);
+    }
 }

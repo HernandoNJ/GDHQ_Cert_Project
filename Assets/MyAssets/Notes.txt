@@ -1,0 +1,2 @@
+* Player and enemy speed increased with difficulty
+* Player lasers and enemy clones' parent set to avoid hierarchy overfilling

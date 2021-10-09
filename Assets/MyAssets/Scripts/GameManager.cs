@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     
     private int score;
     private int currentWave;
+    private int currentDifficulty;
     private string difficultyLevel;
     
     // TODO increase enemies speed in difficulty
@@ -23,9 +24,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        SetCurrentDifficulty();
     }
 
-    public string GetDifficulty() => difficultyLevel;
+    public string GetDifficultyString() => difficultyLevel;
+    
+    private void SetCurrentDifficulty()
+    {
+        currentDifficulty = difficultyLevel switch
+        { "Easy" => 1, "Medium" => 2, "Hard" => 3, _ => currentDifficulty };
+
+        Debug.Log("Difficulty: " + currentDifficulty);
+    }
+
+    public int GetCurrentDifficulty() => currentDifficulty;
 
     public void StoreScore() => PlayerPrefs.SetInt("Score",score);
 

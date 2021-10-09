@@ -11,17 +11,22 @@ public class Weapons : MonoBehaviour
     private static Weapons instance;
     public static Weapons Instance => instance;
 
-
     private void Awake() => instance = this;
 
     private void Start()
     {
-        if (instance == null) Debug.LogWarning("PlayerWeapons instance is null");
+        if (instance == null) Debug.LogWarning("PlayerWeapons is null");
 
-        foreach (var laserPos in laserPositions) 
-        { laserPos.SetActive(false); }
-
+        DisableWeaponPositions();
         UpdateActiveWeapons(1);
+    }
+
+    private void SetCooldown()
+        => shootCooldown -= GameManager.Instance.GetCurrentDifficulty() * 0.03f;
+ 
+    private void DisableWeaponPositions()
+    {
+        foreach (var laserPos in laserPositions) laserPos.SetActive(false); 
     }
 
     private void ActivateWeaponPositions()
@@ -51,7 +56,7 @@ public class Weapons : MonoBehaviour
         if (Time.time > timeForNextShoot)
         {
             timeForNextShoot = Time.time + shootCooldown;
-            
+
             foreach (var laserPos in laserPositions)
             {
                 if (laserPos.activeInHierarchy)
@@ -64,6 +69,7 @@ public class Weapons : MonoBehaviour
             }
         }
     }
+
     /// <summary> Increase or reduce the number of weapons </summary>
     /// <param name="value"></param>
     public void UpdateActiveWeapons(int value)

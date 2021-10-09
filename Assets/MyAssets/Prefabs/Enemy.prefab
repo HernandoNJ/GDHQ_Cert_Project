@@ -70,7 +70,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0043722987, y: 0.0021861792}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -81,7 +81,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83, y: 1.1}
+  m_Size: {x: 0.74255466, y: 0.50974417}
   m_EdgeRadius: 0
 --- !u!82 &3636865544351559042
 AudioSource:
@@ -191,7 +191,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc70f52666b5ddd47b63c5f2544e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
+  shootCooldown: 2.3
+  isVulnerable: 0
+  laserPrefab: {fileID: 4355739381196178677, guid: 8fb739c86d8b4c44dadda5efc58b4448, type: 3}
+  explosionPrefab: {fileID: 5376496727357828791, guid: 795a2ab32e376c44abcb6e5830a02f5f, type: 3}
+  firePoint: {fileID: 843162257564436466}
 --- !u!1 &2767631999980433963
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,7 +292,7 @@ GameObject:
   m_Layer: 0
   m_Name: FirePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

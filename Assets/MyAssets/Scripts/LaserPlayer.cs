@@ -11,6 +11,13 @@ public class LaserPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Outbound")) gameObject.SetActive(false);
+        if (other.CompareTag("Enemy"))
+        {
+            var enemy = other.GetComponent<Enemy>();
+            if(enemy != null) enemy.Damage();
+            gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Laser")) Destroy(other.gameObject);
+        else if (other.gameObject.name == "RightCollider") gameObject.SetActive(false);
     }
 }

@@ -3,13 +3,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private int health;
+    [SerializeField] private int health = 2;
     [SerializeField] private Vector2 startPosition;
 
 
     private void Start()
     {
         transform.position = startPosition;
+        
+        // Increase speed and health with difficulty
+        speed += GameManager.Instance.GetCurrentDifficulty();
+        health += GameManager.Instance.GetCurrentDifficulty();
     }
 
     private void Update()

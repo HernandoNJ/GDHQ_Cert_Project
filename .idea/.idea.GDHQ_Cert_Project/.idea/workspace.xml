@@ -14,6 +14,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Test22.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/ParallaxTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Weapons.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -76,7 +77,8 @@
       <workItem from="1633646074185" duration="244000" />
       <workItem from="1633704847606" duration="876000" />
       <workItem from="1633705761249" duration="4786000" />
-      <workItem from="1633719763665" duration="1506000" />
+      <workItem from="1633719763665" duration="3383000" />
+      <workItem from="1633727369135" duration="11235000" />
     </task>
     <servers />
   </component>
