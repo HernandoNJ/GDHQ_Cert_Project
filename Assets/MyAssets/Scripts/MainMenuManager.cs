@@ -64,9 +64,15 @@ public class MainMenuManager : MonoBehaviour
     {
         StartCoroutine(StartGameRoutine(sceneIndex));
     }
+    
+    public void StoreScore()
+    {
+        PlayerPrefs.SetInt("Score", playerScore);
+    }
 
     public void QuitGame()
     {
+        StoreScore();
         StartCoroutine(QuitGameRoutine());
     }
 

@@ -7,6 +7,9 @@ TagManager:
   - Laser
   - Outbound
   - ActivateEnemies
+  - Enemy
+  - MidBoss
+  - FinalBoss
   layers:
   - Default
   - TransparentFX

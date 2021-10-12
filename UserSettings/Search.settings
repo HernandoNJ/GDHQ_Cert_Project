@@ -10,9 +10,9 @@ scopes = {
 	"last_search.7F95D817" = "Collider"
 	"InspectorPreview.7F95D817" = "0"
 	"currentGroup.7F95D817" = "settings"
-	"last_search.83F126EB" = "PlayerTest"
+	"last_search.83F126EB" = "PlayerController"
 	"InspectorPreview.83F126EB" = "0"
-	"currentGroup.83F126EB" = "all"
+	"currentGroup.83F126EB" = "scene"
 }
 providers = {
 	asset = {
@@ -52,6 +52,7 @@ providers = {
 	}
 }
 recentSearches = [
+	"PlayerTest"
 	"MainMenu"
 	"t:script Player "
 	"p: "

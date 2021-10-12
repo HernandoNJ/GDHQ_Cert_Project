@@ -8,12 +8,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => instance;
     
     private int score;
-    private int currentWave;
     private int currentDifficulty;
     private string difficultyLevel;
-    
-    // TODO increase enemies speed in difficulty
-    
+    private bool midBossActive;
+    private bool finalBossActive;
+
     private void Awake()
     {
         instance = this;
@@ -27,8 +26,6 @@ public class GameManager : MonoBehaviour
         SetCurrentDifficulty();
     }
 
-    public string GetDifficultyString() => difficultyLevel;
-    
     private void SetCurrentDifficulty()
     {
         currentDifficulty = difficultyLevel switch
@@ -39,13 +36,20 @@ public class GameManager : MonoBehaviour
 
     public int GetCurrentDifficulty() => currentDifficulty;
 
-    public void StoreScore() => PlayerPrefs.SetInt("Score",score);
+    public void StoreScore()
+    {
+        PlayerPrefs.SetInt("Score", score);
+    }
 
-    public int SetNewWave() => currentWave++;
+    public void FinalBossDestroyed()
+    {
+        // TODO implement code
+    }
 
     public void GameOver()
     {
         Debug.Log("Game over");
+        StoreScore();
         player.SetActive(false);
     }
 }

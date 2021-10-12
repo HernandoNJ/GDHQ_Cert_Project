@@ -5,15 +5,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private int health = 2;
     [SerializeField] private Vector2 startPosition;
-
-
+    
+    private GameManager gM_Instance;
+    
     private void Start()
     {
+        gM_Instance = GameManager.Instance;
         transform.position = startPosition;
         
         // Increase speed and health with difficulty
-        speed += GameManager.Instance.GetCurrentDifficulty();
-        health += GameManager.Instance.GetCurrentDifficulty();
+        speed += gM_Instance.GetCurrentDifficulty();
+        health += gM_Instance.GetCurrentDifficulty();
     }
 
     private void Update()
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour
         var yPos = transform.position.y;
         var moveVH = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        transform.position = new Vector2(Mathf.Clamp(xPos, -5, 5), Mathf.Clamp(yPos, -3, 3));
+        transform.position = new Vector2(Mathf.Clamp(xPos, -7.5f, 5), Mathf.Clamp(yPos, -3, 5));
         transform.Translate(moveVH * speed * Time.deltaTime);
     }
 
@@ -47,10 +49,6 @@ public class Player : MonoBehaviour
         health -= value;
         Weapons.Instance.UpdateActiveWeapons(-value);
 
-        if (health == 0)
-        {
-            GameManager.Instance.GameOver();
-            gameObject.SetActive(false);
-        }
+        if (health == 0) gM_Instance.GameOver();
     }
 }
