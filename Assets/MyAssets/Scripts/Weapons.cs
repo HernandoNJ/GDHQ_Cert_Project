@@ -15,12 +15,16 @@ public class Weapons : MonoBehaviour
 
     private void Start()
     {
-        if (instance == null) Debug.LogWarning("PlayerWeapons is null");
-
+        CheckIfWeaponsNull();
         DisableWeaponPositions();
         UpdateActiveWeapons(1);
     }
 
+    private void CheckIfWeaponsNull()
+    {
+        if (instance == null) Debug.LogWarning("PlayerWeapons is null");
+    }
+    
     private void SetCooldown()
         => shootCooldown -= GameManager.Instance.GetCurrentDifficulty() * 0.03f;
  
@@ -39,9 +43,9 @@ public class Weapons : MonoBehaviour
                 laserPositions[2].SetActive(false);
                 break;
             case 2:
-                laserPositions[0].SetActive(true);
+                laserPositions[0].SetActive(false);
                 laserPositions[1].SetActive(true);
-                laserPositions[2].SetActive(false);
+                laserPositions[2].SetActive(true);
                 break;
             case 3:
                 laserPositions[0].SetActive(true);

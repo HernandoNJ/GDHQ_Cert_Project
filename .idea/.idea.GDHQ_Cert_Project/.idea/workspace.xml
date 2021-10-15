@@ -13,7 +13,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Test22.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/ParallaxTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Weapons.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,6 +82,10 @@
       <workItem from="1633817676155" duration="638000" />
       <workItem from="1633819318086" duration="2243000" />
       <workItem from="1633993267160" duration="9599000" />
+      <workItem from="1634049944020" duration="2560000" />
+      <workItem from="1634165031629" duration="2951000" />
+      <workItem from="1634253846886" duration="1029000" />
+      <workItem from="1634329305445" duration="6132000" />
     </task>
     <servers />
   </component>

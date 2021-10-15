@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -11,7 +10,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool isEnemy;
     [SerializeField] private bool isMidBoss;
     [SerializeField] private bool isFinalBoss;
-    
+
+    [SerializeField] private Animator enemyAnimController;
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Transform[] firePoints;
@@ -20,10 +20,14 @@ public class Enemy : MonoBehaviour
     private EnemiesSpawner enemySp_Instance;
     private int health;
 
+    // TODO Create enemies animations with EnemyAnim + 1,2,3,4...etc
+    // 8 for midBoss and 12 for final boss
     // TODO enemies with powerups
-    // TODO set mid boss and final boss movement with coroutine and shooting 
-    // TODO move enemies with animation
-    
+    // TODO set mid boss and final boss movement with animation and shooting 
+    // TODO Ask Thom about using animations with Cinemachine
+    // TODO Ask Thom about documentation
+
+
     private void Start()
     {
         isEnemy = CompareTag("Enemy");
@@ -38,8 +42,9 @@ public class Enemy : MonoBehaviour
         damageAmount = gM_Instance.GetCurrentDifficulty();
 
         shootEnabled = true;
-        isVulnerable = false;
         shootCooldown -= gM_Instance.GetCurrentDifficulty() * 0.2f;
+        if (isEnemy) isVulnerable = false;
+        SetEnemyAnimation();
         InvokeRepeating(nameof(Shoot), 0.1f, shootCooldown);
     }
 
@@ -50,7 +55,11 @@ public class Enemy : MonoBehaviour
 
     private void MoveEnemy()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (isEnemy)
+        {
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
+        
     }
 
     private void Shoot()
@@ -61,10 +70,7 @@ public class Enemy : MonoBehaviour
 
         if (isMidBoss || isFinalBoss)
         {
-            foreach (var point in firePoints)
-            {
-                Instantiate(laserPrefab, point.position, Quaternion.identity);
-            }
+            foreach (var point in firePoints) { Instantiate(laserPrefab, point.position, Quaternion.identity); }
         }
     }
 
@@ -76,16 +82,24 @@ public class Enemy : MonoBehaviour
 
         if (health == 0)
         {
-            if(isEnemy) EnemyDestroyed();
-            else if (isMidBoss) enemySp_Instance.MidBossDestroyed();
-            else if (isFinalBoss) enemySp_Instance.FinalBossDestroyed();
+            if (isEnemy)
             {
-                //Enemy
+                EnemyDestroyed();
+                UIManager.Instance.UpdateScore(1);
             }
-            //else if (isFinalBoss) finalBossDestroyed = true;
+            else if (isMidBoss)
+            {
+                enemySp_Instance.MidBossDestroyed();
+                UIManager.Instance.UpdateScore(10);
+            }
+            else if (isFinalBoss)
+            {
+                EnemiesSpawner.FinalBossDestroyed();
+                UIManager.Instance.UpdateScore(30);
+            }
         }
     }
-
+    
     private void DisableComponents()
     {
         speed = 0;
@@ -96,18 +110,27 @@ public class Enemy : MonoBehaviour
 
     private void EnemyDestroyed()
     {
+        // TODO ask Thom if there is a better way
         DisableComponents();
-        var explosion = Instantiate(explosionPrefab, transform.position, quaternion.identity);
+        var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(explosion, 0.5f);
         Destroy(gameObject, 0.7f);
     }
 
+    // Values 1 to 7 and 9 to 11 for basic enemy
+    // 8 for mid boss and 12 for final boss
+    // StartNewWave() in EnemiesSpawner modifies the anim value
+    private void SetEnemyAnimation()
+    {
+        var animValue = enemySp_Instance.GetCurrentWave();
+        enemyAnimController.Play("EnemyAnim" + animValue);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (isEnemy)
+        if (other.gameObject.name == "ActivateEnemiesCollider")
         {
-            if (other.gameObject.name == "ActivateEnemiesCollider")
-                isVulnerable = true;
+            if (isEnemy) isVulnerable = true;
         }
 
         else if (other.CompareTag("Player"))

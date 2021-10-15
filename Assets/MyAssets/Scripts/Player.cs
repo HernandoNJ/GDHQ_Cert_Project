@@ -7,10 +7,11 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 startPosition;
     
     private GameManager gM_Instance;
-    
+
     private void Start()
     {
         gM_Instance = GameManager.Instance;
+        UIManager.Instance.LivesAmount = health;
         transform.position = startPosition;
         
         // Increase speed and health with difficulty
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) Shoot();
         if (Input.GetKeyDown(KeyCode.T)) WeaponPowerup();
+        if (Input.GetKeyDown(KeyCode.Y)) TestScoreUI();
     }
 
     private void MovePlayer()
@@ -32,7 +34,7 @@ public class Player : MonoBehaviour
         var yPos = transform.position.y;
         var moveVH = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        transform.position = new Vector2(Mathf.Clamp(xPos, -7.5f, 5), Mathf.Clamp(yPos, -3, 5));
+        transform.position = new Vector2(Mathf.Clamp(xPos, -7.5f, 5), Mathf.Clamp(yPos, -2.5f, 4.3f));
         transform.Translate(moveVH * speed * Time.deltaTime);
     }
 
@@ -50,5 +52,13 @@ public class Player : MonoBehaviour
         Weapons.Instance.UpdateActiveWeapons(-value);
 
         if (health == 0) gM_Instance.GameOver();
+    }
+
+    public int scoreToUpdate;
+
+    private void TestScoreUI()
+    {
+        scoreToUpdate += 10;
+        UIManager.Instance.UpdateScore(scoreToUpdate);
     }
 }

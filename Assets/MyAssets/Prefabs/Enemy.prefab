@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2211652629967284444}
   - component: {fileID: 3636865544351559042}
   - component: {fileID: 2219307327181526493}
+  - component: {fileID: -6121321954900321255}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -191,13 +192,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc70f52666b5ddd47b63c5f2544e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 0
   speed: 4
   shootCooldown: 2.3
   isVulnerable: 0
   shootEnabled: 0
+  isEnemy: 0
+  isMidBoss: 0
+  isFinalBoss: 0
+  enemyAnimController: {fileID: -6121321954900321255}
   laserPrefab: {fileID: 4355739381196178677, guid: 8fb739c86d8b4c44dadda5efc58b4448, type: 3}
   explosionPrefab: {fileID: 1280330470263330433, guid: 668b3aa43136fc14a81ce64606d1a894, type: 3}
-  firePoint: {fileID: 843162257564436466}
+  firePoints: []
+--- !u!95 &-6121321954900321255
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2219307327181526492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2767631999980433963
 GameObject:
   m_ObjectHideFlags: 0
