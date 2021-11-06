@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -16,35 +17,32 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Transform[] firePoints;
 
-    private GameManager gM_Instance;
-    private EnemiesSpawner enemySp_Instance;
+    private GameManager gm_Instance;
+    private EnemiesSpawner enemiesSpawner;
     private int health;
 
+    public static event Action OnFinalBossDestroyed;
+
     // TODO Create enemies animations with EnemyAnim + 1,2,3,4...etc
-    // 8 for midBoss and 12 for final boss
     // TODO enemies with powerups
     // TODO set mid boss and final boss movement with animation and shooting 
-    // TODO Ask Thom about using animations with Cinemachine
-    // TODO Ask Thom about documentation
-
 
     private void Start()
     {
         isEnemy = CompareTag("Enemy");
         isMidBoss = CompareTag("MidBoss");
         isFinalBoss = CompareTag("FinalBoss");
-        gM_Instance = GameManager.Instance;
-        enemySp_Instance = EnemiesSpawner.Instance;
+        gm_Instance = GameManager.Instance;
+        enemiesSpawner = EnemiesSpawner.Instance;
 
         // Increase speed with difficulty
-        speed += gM_Instance.GetCurrentDifficulty();
-        health = gM_Instance.GetCurrentDifficulty();
-        damageAmount = gM_Instance.GetCurrentDifficulty();
+        speed += gm_Instance.GetCurrentDifficulty();
+        health = gm_Instance.GetCurrentDifficulty();
+        damageAmount = gm_Instance.GetCurrentDifficulty();
 
         shootEnabled = true;
-        shootCooldown -= gM_Instance.GetCurrentDifficulty() * 0.2f;
+        shootCooldown -= gm_Instance.GetCurrentDifficulty() * 0.2f;
         if (isEnemy) isVulnerable = false;
-        SetEnemyAnimation();
         InvokeRepeating(nameof(Shoot), 0.1f, shootCooldown);
     }
 
@@ -55,11 +53,7 @@ public class Enemy : MonoBehaviour
 
     private void MoveEnemy()
     {
-        if (isEnemy)
-        {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-        }
-        
+        if (isEnemy) transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 
     private void Shoot()
@@ -82,22 +76,16 @@ public class Enemy : MonoBehaviour
 
         if (health == 0)
         {
-            if (isEnemy)
-            {
-                EnemyDestroyed();
-                UIManager.Instance.UpdateScore(1);
-            }
-            else if (isMidBoss)
-            {
-                enemySp_Instance.MidBossDestroyed();
-                UIManager.Instance.UpdateScore(10);
-            }
+            if (isEnemy) UIManager.Instance.UpdateScore(1);
+            else if (isMidBoss) UIManager.Instance.UpdateScore(10);
             else if (isFinalBoss)
             {
-                EnemiesSpawner.FinalBossDestroyed();
                 UIManager.Instance.UpdateScore(30);
+                OnFinalBossDestroyed?.Invoke();
             }
         }
+        
+        BasicEnemyDestroyed();
     }
     
     private void DisableComponents()
@@ -108,24 +96,15 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
     }
 
-    private void EnemyDestroyed()
+    private void BasicEnemyDestroyed()
     {
-        // TODO ask Thom if there is a better way
+        enemiesSpawner.EnemiesCounter--;
         DisableComponents();
         var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(explosion, 0.5f);
         Destroy(gameObject, 0.7f);
     }
-
-    // Values 1 to 7 and 9 to 11 for basic enemy
-    // 8 for mid boss and 12 for final boss
-    // StartNewWave() in EnemiesSpawner modifies the anim value
-    private void SetEnemyAnimation()
-    {
-        var animValue = enemySp_Instance.GetCurrentWave();
-        enemyAnimController.Play("EnemyAnim" + animValue);
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "ActivateEnemiesCollider")

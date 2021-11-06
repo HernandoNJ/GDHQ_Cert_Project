@@ -1,5 +1,6 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -8,25 +9,23 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private float xPos;
     [SerializeField] private float maxUpPos;
     [SerializeField] private float minDownPos;
-    [SerializeField] private int wavesAmount;
+    [SerializeField] private int maxWavesAmount;
     [SerializeField] private int currentWave;
-    [SerializeField] private int enemiesPerBasicWave;
+    [SerializeField] private int maxEnemies;
+    [SerializeField] private int enemyIndex;
+    [SerializeField] private int enemiesCountReference;
     [SerializeField] private bool midBossDestroyed;
+    [SerializeField] private bool spawningEnabled;
     [SerializeField] private GameObject enemiesParent;
     [SerializeField] private GameObject enemyPrefab;
-    
-    [Header("ENEMIES WAVE")]
-    [Tooltip("The ammount of basic enemies per wave")]
-    [SerializeField] private GameObject[] enemiesArray;
-    
     [SerializeField] private GameObject midBossPrefab;
     [SerializeField] private GameObject finalBossPrefab;
-    [SerializeField] private Transform midBossPos;
-    [SerializeField] private Transform finalBossStartPos;
+    [SerializeField] private Transform midBossStart;
+    [SerializeField] private Transform finalBossStart;
+    [SerializeField] private Vector2 enemyStartPos;
+    [SerializeField] private List<GameObject> enemiesList = new();
+    public int EnemiesCounter { get; set; }
 
-    private readonly WaitForSeconds timeToNextSpawn = new WaitForSeconds(0.25f);
-    private readonly WaitForSeconds timeToNextWave = new WaitForSeconds(2);
-    
     private static EnemiesSpawner instance;
     public static EnemiesSpawner Instance => instance;
 
@@ -34,10 +33,23 @@ public class EnemiesSpawner : MonoBehaviour
 
     private void Start()
     {
-        FillEnemiesArray();
+        // Set starting values
         CheckIfInstanceIsNull();
         currentWave = 1;
-        StartNewWave();
+        maxWavesAmount = 13;
+        EnemiesCounter = 0;
+        enemyIndex = 1;
+        midBossPrefab = enemiesList[8];
+        finalBossPrefab = enemiesList[13];
+        spawningEnabled = true;
+        StartCoroutine(wavesRoutine());
+    }
+
+    private void Update()
+    {
+        enemiesCountReference = EnemiesCounter; // for checking enemies count value
+        if (EnemiesCounter == 0) spawningEnabled = true;
+        if (EnemiesCounter < 0) Debug.LogError("enemies count less than 0"); // for checking
     }
 
     private static void CheckIfInstanceIsNull()
@@ -45,113 +57,63 @@ public class EnemiesSpawner : MonoBehaviour
         if (instance == null) Debug.LogError("Enemies spawner is null");
     }
 
-    public int GetCurrentWave() => currentWave;
-
-    private void StartNewWave()
+    private IEnumerator CheckForNewWaveRoutine()
     {
-        if (currentWave <= 0 || currentWave > wavesAmount)
+        spawningEnabled = false;
+        while (spawningEnabled == false)
         {
-            Debug.LogError("phase value not valid");
-            throw new ArgumentOutOfRangeException(nameof(currentWave));
+            yield return new WaitForSeconds(1);
         }
 
-        switch (currentWave)
-        {
-            case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 9: case 10: case 11:
-                StartCoroutine(SpawnEnemiesRoutine());
-                break;
-            case 8:
-                InstantiateMidBoss();
-                break;
-            case 12:
-                InstantiateFinalBoss();
-                break;
-        }
+        StartCoroutine(wavesRoutine());
+    }
 
+    private IEnumerator wavesRoutine()
+    {
+        yield return new WaitForSeconds(1);
+        if (enemyIndex != 8 || enemyIndex != 13) StartCoroutine(BasicWaveRoutine());
+        else if (enemyIndex == 8) StartCoroutine(MidBossRoutine());
+        else if (enemyIndex == 13) StartCoroutine(FinalBossRoutine());
         currentWave++;
     }
 
-    private void FillEnemiesArray()
+    private IEnumerator BasicWaveRoutine()
     {
-        var spawnPos = new Vector2(xPos, SetRandomYPosition());
-        
-        for (int i = 0; i < enemiesArray.Length; i++)
+        yield return new WaitForSeconds(1);
+
+        SetBasicEnemyValues();
+
+        while (EnemiesCounter < maxEnemies)
         {
-            var newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-            enemiesArray[i] = newEnemy;
-            newEnemy.SetActive(false);
-            newEnemy.transform.SetParent(enemiesParent.transform);
-        }
-    }
-
-    private float SetRandomYPosition() => Random.Range(minDownPos, maxUpPos);
-
-    private void InstantiateMidBoss()
-    {
-        Instantiate(midBossPrefab, midBossPos.position, Quaternion.identity);
-    }
-
-    private void InstantiateFinalBoss()
-    {
-        Instantiate(finalBossPrefab, finalBossStartPos.position, Quaternion.identity);
-    }
-    
-    public void MidBossDestroyed() => StartNewWave();
-
-    public static void FinalBossDestroyed()
-    {
-        GameManager.Instance.FinalBossDestroyed();
-    }
-
-    // Waves 1 to 7 and 9 to 11
-    private IEnumerator SpawnEnemiesRoutine()
-    {
-        var enemiesAmount = 0;
-
-        while (enemiesAmount < enemiesPerBasicWave)
-        {
-            enemiesArray[enemiesAmount].SetActive(true);
-            enemiesAmount++;
-            yield return timeToNextSpawn;
+            Instantiate(enemyPrefab, enemyStartPos, quaternion.identity, enemiesParent.transform);
+            yield return new WaitForSeconds(1f);
+            EnemiesCounter++;
         }
 
-        StartNewWave();
+        StartCoroutine(CheckForNewWaveRoutine());
     }
 
-    // TODO Ask Thom - Remove after asking
-    private IEnumerator WavesRoutine()
+    private IEnumerator MidBossRoutine()
     {
-        yield return timeToNextWave;
+        yield return new WaitForSeconds(2);
+        Instantiate(midBossPrefab, midBossStart.position, Quaternion.identity);
+        EnemiesCounter++;
+        StartCoroutine(CheckForNewWaveRoutine());
+    }
 
-        for (currentWave = 1; currentWave < enemiesPerBasicWave; currentWave++)
-        {
-            StartCoroutine(SpawnEnemiesRoutine());
-            yield return timeToNextWave;
-        }
+    private IEnumerator FinalBossRoutine()
+    {
+        yield return new WaitForSeconds(2);
+        Instantiate(finalBossPrefab, finalBossStart.position, Quaternion.identity);
+        EnemiesCounter++;
+        StartCoroutine(CheckForNewWaveRoutine());
+    }
 
-        yield return timeToNextWave;
-
-        // TODO Does this require yield return?
-        if (currentWave == 5) InstantiateMidBoss();
-
-        // TODO Ask Thom how to implement the next code
-
-        if (midBossDestroyed)
-        {
-            yield return timeToNextWave;
-
-            for (currentWave = 6; currentWave < 10; currentWave++)
-            {
-                StartCoroutine(SpawnEnemiesRoutine());
-                yield return timeToNextWave;
-            }
-        }
-
-        yield return timeToNextWave;
-
-        if (currentWave == 10) InstantiateFinalBoss();
-
-        // TODO how to get out from the routine?
-        //if (finalBossDestroyed) return;
+    private void SetBasicEnemyValues()
+    {
+        var yPos = Random.Range(maxUpPos, minDownPos);
+        enemyStartPos = new Vector2(xPos, yPos);
+        enemyIndex = currentWave;
+        enemyPrefab = enemiesList[enemyIndex];
     }
 }

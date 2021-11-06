@@ -10,8 +10,7 @@ public class GameManager : MonoBehaviour
     private int score;
     private int currentDifficulty;
     private string difficultyLevel;
-    private bool midBossActive;
-    private bool finalBossActive;
+    public bool finalBossDestroyed;
 
     private void Awake()
     {
@@ -23,8 +22,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+        Enemy.OnFinalBossDestroyed += FinalBossDestroyed;
         SetCurrentDifficulty();
     }
+
 
     private void SetCurrentDifficulty()
     {
@@ -36,14 +37,14 @@ public class GameManager : MonoBehaviour
 
     public int GetCurrentDifficulty() => currentDifficulty;
 
-    public void StoreScore()
+    private void StoreScore()
     {
         PlayerPrefs.SetInt("Score", score);
     }
 
     public void FinalBossDestroyed()
     {
-        // TODO implement code
+        Debug.LogWarning("Final boss destroyed");
     }
 
     public void GameOver()
