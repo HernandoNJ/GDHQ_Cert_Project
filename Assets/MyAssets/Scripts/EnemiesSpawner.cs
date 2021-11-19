@@ -1,7 +1,6 @@
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class EnemiesSpawner : MonoBehaviour
 {
@@ -10,20 +9,14 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private EnemyWaveData[] enemyDataArray;
     [SerializeField] private EnemyWaveData currentEnemyWaveData;
 
-    [Header("Enemies start position")]
-    [SerializeField] private float xPos;
-    [SerializeField] private float maxUpPos;
-    [SerializeField] private float minDownPos;
-    [SerializeField] private Vector2 enemyStartPos;
-    [SerializeField] private Transform midBossStart;
-    [SerializeField] private Transform finalBossStart;
-
     [Header("Waves info")]
     [SerializeField] private int currentWave;
     [SerializeField] private int maxWaves;
 
     [Header(" ")]
     [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private Vector2 enemyStartPos;
+    
     [SerializeField] private int maxEnemies;
     [SerializeField] private int enemiesCreated; // for testing
     [SerializeField] private int enemiesCount; // for testing
@@ -40,15 +33,18 @@ public class EnemiesSpawner : MonoBehaviour
         StartNewWave();
     }
 
+    public int GetCurrentWave()
+    {
+        return currentWave;
+    }
+
     public void StartNewWave()
     {
         currentWave++;
         
         if (currentWave < maxWaves)
         {
-            var yPos = Random.Range(maxUpPos, minDownPos);
-            enemyStartPos = new Vector2(xPos, yPos);
-            currentEnemyWaveData = enemyDataArray[currentWave - 1];
+            currentEnemyWaveData = enemyDataArray[currentWave];
             StartCoroutine(EnemyWaveRoutine());
         }
     }
@@ -66,7 +62,7 @@ public class EnemiesSpawner : MonoBehaviour
             Instantiate(enemyPrefab, enemyStartPos, quaternion.identity);
             enemiesCreated++;
             gameManager.OnEnemyCreated(1);
-            enemiesCount = gameManager.GetEnemiesAmount();
+            
             yield return new WaitForSeconds(1);
         }
     }

@@ -4,8 +4,6 @@ using UnityEngine;
 public class EnemyWaveData : ScriptableObject
 {
     public GameObject enemyPrefab;
-    public Animator animController;
-    public int animationIndex;
     public int maxEnemies;
     
 }

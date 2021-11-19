@@ -381,5 +381,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b0abdff6d2d4ba419137e8b9972f523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.5
+  speed: 6
   laserParent: {fileID: 0}
