@@ -7,8 +7,8 @@ public class EnemiesSpawner : MonoBehaviour
 {
     [Header("Class references")]
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private EnemyData[] enemyDataArray;
-    [SerializeField] private EnemyData currentEnemyData;
+    [SerializeField] private EnemyWaveData[] enemyDataArray;
+    [SerializeField] private EnemyWaveData currentEnemyWaveData;
 
     [Header("Enemies start position")]
     [SerializeField] private float xPos;
@@ -43,21 +43,23 @@ public class EnemiesSpawner : MonoBehaviour
     public void StartNewWave()
     {
         currentWave++;
-        enemiesCreated = 0;
         
         if (currentWave < maxWaves)
         {
             var yPos = Random.Range(maxUpPos, minDownPos);
             enemyStartPos = new Vector2(xPos, yPos);
-            currentEnemyData = enemyDataArray[currentWave - 1];
+            currentEnemyWaveData = enemyDataArray[currentWave - 1];
             StartCoroutine(EnemyWaveRoutine());
         }
     }
 
     private IEnumerator EnemyWaveRoutine()
     {
-        maxEnemies = currentEnemyData.maxEnemies;
-        enemyPrefab = currentEnemyData.enemyPrefab;
+        yield return new WaitForSeconds(3);
+
+        enemiesCreated = 0;
+        maxEnemies = currentEnemyWaveData.maxEnemies;
+        enemyPrefab = currentEnemyWaveData.enemyPrefab;
 
         while (enemiesCreated < maxEnemies)
         {
@@ -67,7 +69,5 @@ public class EnemiesSpawner : MonoBehaviour
             enemiesCount = gameManager.GetEnemiesAmount();
             yield return new WaitForSeconds(1);
         }
-
-        yield return new WaitForSeconds(3);
     }
 }

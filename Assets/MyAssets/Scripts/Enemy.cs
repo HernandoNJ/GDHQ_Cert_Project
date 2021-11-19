@@ -31,13 +31,7 @@ public class Enemy : MonoBehaviour
         isFinalBoss = CompareTag("FinalBoss");
         gameManager = GameManager.Instance;
 
-        // Increase speed with difficulty
-        speed += gameManager.GetCurrentDifficulty();
-        health = gameManager.GetCurrentDifficulty();
-        damageAmount = gameManager.GetCurrentDifficulty();
-
         shootEnabled = true;
-        shootCooldown -= gameManager.GetCurrentDifficulty() * 0.2f;
         if (isEnemyLevel1) isVulnerable = false;
         InvokeRepeating(nameof(Shoot), 0.1f, shootCooldown);
     }
@@ -60,7 +54,10 @@ public class Enemy : MonoBehaviour
 
         if (isMidBoss || isFinalBoss)
         {
-            foreach (var point in firePoints) { Instantiate(laserPrefab, point.position, Quaternion.identity); }
+            foreach (var point in firePoints)
+            {
+                Instantiate(laserPrefab, point.position, Quaternion.identity);
+            }
         }
     }
 

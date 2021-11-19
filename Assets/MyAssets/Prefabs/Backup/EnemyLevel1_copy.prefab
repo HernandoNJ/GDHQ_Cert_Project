@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2219307327181526493}
   - component: {fileID: -6121321954900321255}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyLevel1_copy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,10 +197,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 0
   speed: 4
-  shootCooldown: 2.3
+  shootCooldown: 1.4
   isVulnerable: 0
   shootEnabled: 0
-  isEnemy: 0
+  isEnemyLevel1: 0
   isMidBoss: 0
   isFinalBoss: 0
   enemyAnimController: {fileID: -6121321954900321255}
@@ -210,6 +210,7 @@ MonoBehaviour:
   - {fileID: 843162257564436466}
   - {fileID: 8000948679731192923}
   - {fileID: 811790816929661629}
+  gameManager: {fileID: 0}
 --- !u!95 &-6121321954900321255
 Animator:
   serializedVersion: 4

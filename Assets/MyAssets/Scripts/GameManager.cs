@@ -65,8 +65,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Difficulty: " + currentDifficulty);
     }
 
-    public int GetCurrentDifficulty() => currentDifficulty;
-
+    // TODO add to Game Over or Quit functions
     private void StoreScore()
     {
         PlayerPrefs.SetInt("Score", score);

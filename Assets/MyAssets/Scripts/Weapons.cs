@@ -17,7 +17,8 @@ public class Weapons : MonoBehaviour
     {
         CheckIfWeaponsNull();
         DisableWeaponPositions();
-        UpdateActiveWeapons(1);
+        weaponsNumber = 1;
+        ActivateWeaponPositions();
     }
 
     private void CheckIfWeaponsNull()
@@ -25,9 +26,6 @@ public class Weapons : MonoBehaviour
         if (instance == null) Debug.LogWarning("PlayerWeapons is null");
     }
     
-    private void SetCooldown()
-        => shootCooldown -= GameManager.Instance.GetCurrentDifficulty() * 0.03f;
- 
     private void DisableWeaponPositions()
     {
         foreach (var laserPos in laserPositions) laserPos.SetActive(false); 
@@ -78,8 +76,7 @@ public class Weapons : MonoBehaviour
     /// <param name="value"></param>
     public void UpdateActiveWeapons(int value)
     {
-        if (weaponsNumber >= 3) return;
-
+        if (weaponsNumber is >= 3 or <= 1) return;
         weaponsNumber += value;
         ActivateWeaponPositions();
     }

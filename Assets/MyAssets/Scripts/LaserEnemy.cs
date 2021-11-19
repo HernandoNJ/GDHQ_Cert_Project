@@ -25,6 +25,6 @@ public class LaserEnemy : MonoBehaviour
             Destroy(gameObject);
         }
         else if (other.CompareTag("Laser")) other.gameObject.SetActive(false);
-        else if(other.gameObject.name == "LeftCollider") Destroy(gameObject);
+        else if(other.gameObject.name == "LeftCollider") gameObject.SetActive(false);
     }
 }

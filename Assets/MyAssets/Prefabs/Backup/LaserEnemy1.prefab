@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 7222679478675406396}
   - component: {fileID: 2987493620234212061}
   m_Layer: 0
-  m_Name: LaserEnemy
+  m_Name: LaserEnemy1
   m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

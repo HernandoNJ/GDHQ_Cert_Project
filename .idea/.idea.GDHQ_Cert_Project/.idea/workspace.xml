@@ -6,51 +6,49 @@
   <component name="ChangeListManager">
     <list default="true" id="3ef251bc-10b1-45d2-862d-435d2036d2d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GDHQ_Cert_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDHQ_Cert_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/ButtonAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/ButtonAnimation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/DemoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/DemoManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/AnimationHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/AnimationHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/SelfDestruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/SelfDestruct.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Asteroid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Asteroid.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CameraEffects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CameraEffects.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CodeExamples.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CodeExamples.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/EnemyDoubleLaser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/EnemyDoubleLaser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Explosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Explosion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MultipleShots.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MultipleShots.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Parallax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Parallax.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/SpawnManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Test.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/UIManagerT.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/UIManagerT.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/Notes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/Notes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/NotesWithTextArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/NotesWithTextArea.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/TestCube.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/TestCube.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/ToDos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/ToDos.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/CameraController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Coin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Coin.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/GameOver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/GameOver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Obstacle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstacleLineSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstacleLineSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstaclesLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstaclesLine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Pause.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Pause.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/RocketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/RocketController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/ExitGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/ExitGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Garage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Garage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Part.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Part.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/RateGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/RateGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Settings.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/AnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/AnimationController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Highscore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Highscore.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LevelLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LevelLoader.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LoadBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LoadBar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Score.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Wallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Wallet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/ButtonAnimator.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/ButtonAnimator.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/ButtonAnims.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/ButtonAnims.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Clicked.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Clicked.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Disabled.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Disabled.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Highlighted.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Highlighted.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/LaserShot.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/LaserShot.controller.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Normal.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Normal.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Pressed.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Pressed.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Selected.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/Selected.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/ShotAnimation.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Animation/ShotAnimation.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Prefabs/Enemy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Prefabs/Enemy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Prefabs/LaserEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Prefabs/LaserEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemiesSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemiesSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyWaveData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyWaveData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData_FinalBoss.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData_FinalBoss.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData_Level1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData_Level1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData_MidBoss.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemyData_MidBoss.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Weapons.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Weapons.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,6 +157,8 @@
       <workItem from="1636163992488" duration="1167000" />
       <workItem from="1637258357811" duration="2932000" />
       <workItem from="1637275425012" duration="9399000" />
+      <workItem from="1637290787966" duration="48000" />
+      <workItem from="1637332860304" duration="5994000" />
     </task>
     <servers />
   </component>
@@ -168,6 +168,17 @@
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
