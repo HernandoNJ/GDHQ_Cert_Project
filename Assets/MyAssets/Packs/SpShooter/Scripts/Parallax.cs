@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class Parallax : MonoBehaviour
 {
     [SerializeField] private float speed;
@@ -17,4 +19,5 @@ public class Parallax : MonoBehaviour
         if (transform.position.x <= -4.7f)
             transform.position = startPosition;
     }
+}
 }

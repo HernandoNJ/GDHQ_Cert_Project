@@ -1,6 +1,7 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class RocketController : MonoBehaviour
 {
     [Range(0, 9.5f)]
@@ -168,12 +169,13 @@ public class RocketController : MonoBehaviour
         // Enable crash particles
         crashedParticles.SetActive(true);
         
-        #if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS
             // If vibration is enabled then vibrate device.
             if(Settings.GetSetting("Vibration"))
             {
                 Handheld.Vibrate();
             }
-        #endif
+#endif
     }
+}
 }

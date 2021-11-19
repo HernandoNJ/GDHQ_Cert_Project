@@ -1,6 +1,8 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI
+{
 public class Highscore : MonoBehaviour
 {
     public bool displayWithText;
@@ -45,4 +47,5 @@ public class Highscore : MonoBehaviour
 
         }
     }
+}
 }

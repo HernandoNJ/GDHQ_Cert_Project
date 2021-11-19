@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class ObstaclesLine : MonoBehaviour
 {
     public static float speed;
@@ -125,4 +126,5 @@ public class ObstaclesLine : MonoBehaviour
             SpawnCoin(availableLanes[randomLaneIndex]);
         }
     }
+}
 }

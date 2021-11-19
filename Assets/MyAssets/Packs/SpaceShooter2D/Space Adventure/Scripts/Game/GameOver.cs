@@ -1,6 +1,9 @@
-﻿using UnityEngine;
+﻿using MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI;
 using TMPro;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class GameOver : MonoBehaviour
 {
     public int continuePrice;
@@ -56,4 +59,5 @@ public class GameOver : MonoBehaviour
             notEnough.Play("Not-Enough-In");
         }
     }
+}
 }

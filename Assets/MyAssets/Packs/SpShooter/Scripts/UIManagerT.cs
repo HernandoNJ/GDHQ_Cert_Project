@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class UIManagerT : MonoBehaviour
 {
     [SerializeField] private Text ammoText;
@@ -119,4 +121,5 @@ public class UIManagerT : MonoBehaviour
             yield return new WaitForSeconds(0.35f);
         }
     }
+}
 }

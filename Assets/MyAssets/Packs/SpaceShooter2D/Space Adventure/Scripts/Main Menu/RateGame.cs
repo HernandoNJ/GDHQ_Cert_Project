@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Main_Menu
+{
 public class RateGame : MonoBehaviour
 {
     public string packageName;
@@ -54,4 +57,5 @@ public class RateGame : MonoBehaviour
     {
         Application.Quit();
     }
+}
 }

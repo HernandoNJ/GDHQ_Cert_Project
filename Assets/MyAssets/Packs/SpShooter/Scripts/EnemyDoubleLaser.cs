@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class EnemyDoubleLaser : MonoBehaviour
 {
     [SerializeField] private float speed = 4f;
@@ -26,4 +28,5 @@ public class EnemyDoubleLaser : MonoBehaviour
             Destroy(gameObject);
         }
     }
+}
 }

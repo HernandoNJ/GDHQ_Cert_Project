@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class CameraController : MonoBehaviour
 {
     public Transform target;
@@ -18,4 +20,5 @@ public class CameraController : MonoBehaviour
             transform.position = new Vector3(smoothedPosition.x, transform.position.y, transform.position.z);
         }
     }
+}
 }

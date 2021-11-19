@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyAssets.Packs.Inguz_Media_Studio.Free_2D_Impact_FX.Demo_Scene
+{
 public class ButtonAnimation : MonoBehaviour {
 	float initial_size_x;
 	float initial_size_y;
@@ -41,4 +41,5 @@ public class ButtonAnimation : MonoBehaviour {
 		GO = true;
 		transform.localScale = new Vector3 (initial_size_x*factor, initial_size_y*factor, 1.0f);
 	}
+}
 }

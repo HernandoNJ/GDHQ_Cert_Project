@@ -1,4 +1,7 @@
-﻿public class CodeExamples { }
+﻿namespace MyAssets.Packs.SpShooter.Scripts
+{
+public class CodeExamples { }
+}
 
 // ******* Increase, decrease speed **********
 

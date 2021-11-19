@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI
+{
 public class LoadBar : MonoBehaviour
 {
     [Range(0,1)]
@@ -25,4 +27,5 @@ public class LoadBar : MonoBehaviour
         lastRotation = transform.rotation;
     }
 
+}
 }

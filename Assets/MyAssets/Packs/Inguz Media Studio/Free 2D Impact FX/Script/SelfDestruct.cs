@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-
-namespace InguzPings
+namespace MyAssets.Packs.Inguz_Media_Studio.Free_2D_Impact_FX.Script
 {
 
 

@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-
-namespace InguzPings
+namespace MyAssets.Packs.Inguz_Media_Studio.Free_2D_Impact_FX.Script
 {
 
 public class AnimationHelper : MonoBehaviour {

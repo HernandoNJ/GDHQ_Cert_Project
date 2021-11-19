@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class Obstacle : MonoBehaviour
 {
     private float speed;
@@ -39,4 +41,5 @@ public class Obstacle : MonoBehaviour
             }
         }
     }
+}
 }

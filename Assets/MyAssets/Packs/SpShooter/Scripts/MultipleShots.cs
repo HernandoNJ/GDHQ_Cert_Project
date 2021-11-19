@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class MultipleShots : MonoBehaviour
 {
     [SerializeField] private int shotsAmount;
@@ -42,4 +44,5 @@ public class MultipleShots : MonoBehaviour
             }
         }
     }
+}
 }

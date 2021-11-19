@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class Pause : MonoBehaviour
 {
     public RocketController rocketController;
 
-    #if UNITY_ANDROID
+#if UNITY_ANDROID
         private bool paused;
-    #endif
+#endif
 
     private AnimationController animationController;
 
@@ -23,9 +26,9 @@ public class Pause : MonoBehaviour
         // Open pause winodw.
         animationController.OpenWindow();
         // Used to check if game is paused/resumed.
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
             paused = true;
-        #endif
+#endif
     }
 
     // When player pressed resume or back/esc(when paused) button.
@@ -36,14 +39,14 @@ public class Pause : MonoBehaviour
         // Close pause window.
         animationController.CloseWindow();
         // Used to check if game is paused/resumed.
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
             paused = false;
-        #endif
+#endif
     }
 
     void Update()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         // Check if back/esc button was pressed.
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
@@ -61,6 +64,7 @@ public class Pause : MonoBehaviour
                 }
             }
         }    
-        #endif        
+#endif        
     }
+}
 }

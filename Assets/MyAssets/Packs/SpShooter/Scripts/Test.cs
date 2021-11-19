@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class Test : MonoBehaviour
 {
     [SerializeField] private int weaponId;
@@ -19,4 +19,5 @@ public class Test : MonoBehaviour
             case 3: Debug.Log("Machine Gun"); break;
         }
     }
+}
 }

@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class Coin : MonoBehaviour
 {
     private Animation anim;
@@ -32,4 +35,5 @@ public class Coin : MonoBehaviour
             }
         }
     }
+}
 }

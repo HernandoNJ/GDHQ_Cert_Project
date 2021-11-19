@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+namespace MyAssets.Packs.Inguz_Media_Studio.Free_2D_Impact_FX.Demo_Scene
+{
 public class DemoManager : MonoBehaviour {
 	public TextMesh text_fx_name;
 	public GameObject[] fx_prefabs;
@@ -23,26 +23,26 @@ public class DemoManager : MonoBehaviour {
 			if (ray_cast_hit) 
 			{
 				switch(ray_cast_hit.transform.name){
-				case "Wallpaper":
-					Instantiate(fx_prefabs[ index_fx ], new Vector3(ray.origin.x, ray.origin.y, 0), Quaternion.identity);
-					break;
-				case "UI-arrow-right":
-					ray_cast_hit.transform.SendMessage("Go");
-					index_fx++;
-					if(index_fx >= fx_prefabs.Length)
-						index_fx = 0;
-					text_fx_name.text = "[" + (index_fx + 1) + "] " + fx_prefabs[ index_fx ].name;
-					break;
-				case "UI-arrow-left":
-					ray_cast_hit.transform.SendMessage("Go");
-					index_fx--;
-					if(index_fx <= -1)
-						index_fx = fx_prefabs.Length - 1;
-					text_fx_name.text = "[" + (index_fx + 1) + "] " + fx_prefabs[ index_fx ].name;
-					break;
-				case "Instructions":
-					Destroy(ray_cast_hit.transform.gameObject);
-					break;
+					case "Wallpaper":
+						Instantiate(fx_prefabs[ index_fx ], new Vector3(ray.origin.x, ray.origin.y, 0), Quaternion.identity);
+						break;
+					case "UI-arrow-right":
+						ray_cast_hit.transform.SendMessage("Go");
+						index_fx++;
+						if(index_fx >= fx_prefabs.Length)
+							index_fx = 0;
+						text_fx_name.text = "[" + (index_fx + 1) + "] " + fx_prefabs[ index_fx ].name;
+						break;
+					case "UI-arrow-left":
+						ray_cast_hit.transform.SendMessage("Go");
+						index_fx--;
+						if(index_fx <= -1)
+							index_fx = fx_prefabs.Length - 1;
+						text_fx_name.text = "[" + (index_fx + 1) + "] " + fx_prefabs[ index_fx ].name;
+						break;
+					case "Instructions":
+						Destroy(ray_cast_hit.transform.gameObject);
+						break;
 				}
 			}
 		}
@@ -68,4 +68,5 @@ public class DemoManager : MonoBehaviour {
 		}
 	}
 
+}
 }

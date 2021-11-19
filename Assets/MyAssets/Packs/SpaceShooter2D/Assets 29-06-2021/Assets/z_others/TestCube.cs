@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace z_others
+namespace MyAssets.Packs.SpaceShooter2D.Assets_29_06_2021.Assets.z_others
 {
 public class TestCube : MonoBehaviour
 {

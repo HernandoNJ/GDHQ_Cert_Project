@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Main_Menu
+{
 public class Settings : MonoBehaviour
 {
     public Sprite soundOn, soundOff, vibrationOn, vibrationOff;
@@ -114,4 +116,5 @@ public class Settings : MonoBehaviour
             vibrationImage.sprite = vibrationOff;
         }
     }
+}
 }

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class CameraEffects : MonoBehaviour
 {
     public Vector3 Amount = new Vector3(1f, 1f, 0);
@@ -26,11 +28,11 @@ public class CameraEffects : MonoBehaviour
     }
 
     public static void ShakeOnce(float duration = 1f, 
-                                    float speed = 10f, 
-                                    Vector3? amount = null, 
-                                    Camera camera = null, 
-                                    bool deltaMovement = true, 
-                                    AnimationCurve curve = null)
+            float speed = 10f, 
+            Vector3? amount = null, 
+            Camera camera = null, 
+            bool deltaMovement = true, 
+            AnimationCurve curve = null)
     {
         //set data
         var instance = ((camera != null) ? camera : Camera.main).gameObject.AddComponent<CameraEffects>();
@@ -92,4 +94,5 @@ public class CameraEffects : MonoBehaviour
         lastPos = nextPos = Vector3.zero;
         lastFoV = nextFoV = 0f;
     }
+}
 }

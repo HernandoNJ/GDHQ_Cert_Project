@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI;
 using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Game
+{
 public class ObstacleLineSpawner : MonoBehaviour
 {
     [Range(0, 4)]
@@ -47,4 +49,5 @@ public class ObstacleLineSpawner : MonoBehaviour
     {
         Score.SetAmount(Score.GetAmount() + 1);
     }
+}
 }

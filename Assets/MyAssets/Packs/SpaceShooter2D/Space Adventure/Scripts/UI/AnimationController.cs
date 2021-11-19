@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI
+{
 public class AnimationController : MonoBehaviour
 {
     Animation anim;
@@ -26,4 +28,5 @@ public class AnimationController : MonoBehaviour
     {
         anim.Play("Window-Out");        
     }
+}
 }

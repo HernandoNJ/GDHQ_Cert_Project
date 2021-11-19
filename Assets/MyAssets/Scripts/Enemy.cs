@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float shootCooldown;
     [SerializeField] private bool isVulnerable;
     [SerializeField] private bool shootEnabled;
-    [SerializeField] private bool isEnemy;
+    [SerializeField] private bool isEnemyLevel1;
     [SerializeField] private bool isMidBoss;
     [SerializeField] private bool isFinalBoss;
 
@@ -17,32 +17,28 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private Transform[] firePoints;
 
-    private GameManager gm_Instance;
-    private EnemiesSpawner enemiesSpawner;
+    [SerializeField] private GameManager gameManager;
     private int health;
 
-    public static event Action OnFinalBossDestroyed;
-
-    // TODO Create enemies animations with EnemyAnim + 1,2,3,4...etc
+    // TODO Create enemies animations with EnemyAnim + 1,2,3,4...etc  enemyAnimController
     // TODO enemies with powerups
     // TODO set mid boss and final boss movement with animation and shooting 
 
     private void Start()
     {
-        isEnemy = CompareTag("Enemy");
+        isEnemyLevel1 = CompareTag("Enemy");
         isMidBoss = CompareTag("MidBoss");
         isFinalBoss = CompareTag("FinalBoss");
-        gm_Instance = GameManager.Instance;
-        enemiesSpawner = EnemiesSpawner.Instance;
+        gameManager = GameManager.Instance;
 
         // Increase speed with difficulty
-        speed += gm_Instance.GetCurrentDifficulty();
-        health = gm_Instance.GetCurrentDifficulty();
-        damageAmount = gm_Instance.GetCurrentDifficulty();
+        speed += gameManager.GetCurrentDifficulty();
+        health = gameManager.GetCurrentDifficulty();
+        damageAmount = gameManager.GetCurrentDifficulty();
 
         shootEnabled = true;
-        shootCooldown -= gm_Instance.GetCurrentDifficulty() * 0.2f;
-        if (isEnemy) isVulnerable = false;
+        shootCooldown -= gameManager.GetCurrentDifficulty() * 0.2f;
+        if (isEnemyLevel1) isVulnerable = false;
         InvokeRepeating(nameof(Shoot), 0.1f, shootCooldown);
     }
 
@@ -53,14 +49,14 @@ public class Enemy : MonoBehaviour
 
     private void MoveEnemy()
     {
-        if (isEnemy) transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if (isEnemyLevel1) transform.Translate(Vector3.left * speed * Time.deltaTime);
     }
 
     private void Shoot()
     {
         if (shootEnabled == false) return;
 
-        if (isEnemy) Instantiate(laserPrefab, firePoints[0].position, Quaternion.identity);
+        if (isEnemyLevel1) Instantiate(laserPrefab, firePoints[0].position, Quaternion.identity);
 
         if (isMidBoss || isFinalBoss)
         {
@@ -68,24 +64,43 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // Enemy health reduced
     public void Damage()
     {
         if (isVulnerable == false) return;
 
         health--;
-
-        if (health == 0)
+        
+        if (health <= 0)
         {
-            if (isEnemy) UIManager.Instance.UpdateScore(1);
-            else if (isMidBoss) UIManager.Instance.UpdateScore(10);
+            if (isEnemyLevel1) PlayerScored(-1,1);
+            else if (isMidBoss) PlayerScored(-1,10);
             else if (isFinalBoss)
             {
-                UIManager.Instance.UpdateScore(30);
-                OnFinalBossDestroyed?.Invoke();
+                PlayerScored(-1,30);
+                gameManager.FinalBossDestroyed();
             }
         }
-        
-        BasicEnemyDestroyed();
+    }
+
+    private void EnemyDestroyed(int enemiesAmount)
+    {
+        gameManager.OnEnemyDestroyed(enemiesAmount);
+        Destroy(gameObject);
+    }
+    
+    private void PlayerScored(int enemiesAmount, int score)
+    {
+        gameManager.OnPlayerScored(enemiesAmount, score);
+        ExplodeEnemy();
+    }
+
+    private void ExplodeEnemy()
+    {
+        DisableComponents();
+        var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        Destroy(explosion, 0.5f);
+        Destroy(gameObject, 0.7f);
     }
     
     private void DisableComponents()
@@ -95,21 +110,12 @@ public class Enemy : MonoBehaviour
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
     }
-
-    private void BasicEnemyDestroyed()
-    {
-        enemiesSpawner.EnemiesCounter--;
-        DisableComponents();
-        var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        Destroy(explosion, 0.5f);
-        Destroy(gameObject, 0.7f);
-    }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "ActivateEnemiesCollider")
         {
-            if (isEnemy) isVulnerable = true;
+            if (isEnemyLevel1) isVulnerable = true;
         }
 
         else if (other.CompareTag("Player"))
@@ -118,7 +124,7 @@ public class Enemy : MonoBehaviour
 
             if (player != null)
             {
-                if (isEnemy)
+                if (isEnemyLevel1)
                 {
                     player.Damage(damageAmount);
                     Damage();
@@ -130,6 +136,6 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-        else if (other.gameObject.name == "LeftCollider") Destroy(gameObject);
+        else if (other.gameObject.name == "LeftCollider") EnemyDestroyed(-1);
     }
 }

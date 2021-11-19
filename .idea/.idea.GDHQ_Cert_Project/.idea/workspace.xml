@@ -4,19 +4,78 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ef251bc-10b1-45d2-862d-435d2036d2d4" name="Changes" comment="" />
+    <list default="true" id="3ef251bc-10b1-45d2-862d-435d2036d2d4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GDHQ_Cert_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GDHQ_Cert_Project/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/ButtonAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/ButtonAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/DemoManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Demo Scene/DemoManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/AnimationHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/AnimationHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/SelfDestruct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/Inguz Media Studio/Free 2D Impact FX/Script/SelfDestruct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Asteroid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Asteroid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CameraEffects.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CameraEffects.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CodeExamples.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/CodeExamples.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/EnemyDoubleLaser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/EnemyDoubleLaser.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Explosion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Explosion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MultipleShots.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/MultipleShots.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Parallax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Parallax.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/SpawnManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/SpawnManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Test.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/Test.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/UIManagerT.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpShooter/Scripts/UIManagerT.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/Notes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/Notes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/NotesWithTextArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/NotesWithTextArea.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/TestCube.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/TestCube.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/ToDos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Assets 29-06-2021/Assets/z_others/ToDos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/CameraController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/CameraController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Coin.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Coin.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/GameOver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/GameOver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Obstacle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Obstacle.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstacleLineSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstacleLineSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstaclesLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/ObstaclesLine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Pause.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/Pause.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/RocketController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Game/RocketController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/ExitGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/ExitGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Garage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Garage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Part.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Part.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/RateGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/RateGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/Main Menu/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/AnimationController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/AnimationController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Highscore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Highscore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LevelLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LevelLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LoadBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/LoadBar.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Score.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Score.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Wallet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Packs/SpaceShooter2D/Space Adventure/Scripts/UI/Wallet.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemiesSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/EnemiesSpawner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MyAssets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MyAssets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/ParallaxTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserEnemy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Weapons.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MyAssets/Scripts/LaserBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1yrRbJg2zqE2UvmbibQOgIVB7vC" />
   <component name="ProjectViewState">
@@ -28,7 +87,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -93,9 +157,15 @@
       <workItem from="1636163356938" duration="61000" />
       <workItem from="1636163754481" duration="26000" />
       <workItem from="1636163992488" duration="1167000" />
+      <workItem from="1637258357811" duration="2932000" />
+      <workItem from="1637275425012" duration="9399000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="VcsManagerConfiguration">

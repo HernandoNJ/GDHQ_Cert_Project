@@ -1,6 +1,8 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI
+{
 public class Score : MonoBehaviour
 {
     public static bool continueGame;
@@ -52,4 +54,5 @@ public class Score : MonoBehaviour
     {
         scoreText.text = amount.ToString();
     }
+}
 }

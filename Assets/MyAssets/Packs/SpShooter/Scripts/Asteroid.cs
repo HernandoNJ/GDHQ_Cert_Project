@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class Asteroid : MonoBehaviour
 {
     [SerializeField] private float rotateSpeeed = 10f;
@@ -31,4 +33,5 @@ public class Asteroid : MonoBehaviour
             Destroy(gameObject, 0.25f);
         }
     }
+}
 }

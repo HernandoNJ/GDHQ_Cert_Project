@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+namespace MyAssets.Packs.SpShooter.Scripts
+{
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
@@ -99,4 +101,5 @@ public class SpawnManager : MonoBehaviour
     {
         isPlayerAlive = false;
     }
+}
 }

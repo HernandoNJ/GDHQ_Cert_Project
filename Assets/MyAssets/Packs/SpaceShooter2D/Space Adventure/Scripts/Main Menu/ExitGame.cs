@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Main_Menu
+{
 public class ExitGame : MonoBehaviour
 {
     public bool rateGameOnExit;
@@ -10,7 +12,7 @@ public class ExitGame : MonoBehaviour
 
     void Update()
     {
-        #if UNITY_ANDROID
+#if UNITY_ANDROID
         // Check if back/esc button was pressed.
         if (Input.GetKeyDown(KeyCode.Escape)) 
         {
@@ -20,7 +22,7 @@ public class ExitGame : MonoBehaviour
                 Exit();
             }
         }    
-        #endif    
+#endif    
     }
 
     public void Exit()
@@ -43,4 +45,5 @@ public class ExitGame : MonoBehaviour
     {
         windowOpened = opened;
     }
+}
 }

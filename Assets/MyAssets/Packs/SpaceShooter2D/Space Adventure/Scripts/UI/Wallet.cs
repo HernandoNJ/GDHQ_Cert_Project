@@ -1,6 +1,8 @@
-﻿using UnityEngine;
-using TMPro;
+﻿using TMPro;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI
+{
 public class Wallet : MonoBehaviour
 {
     private static int amount;
@@ -32,4 +34,5 @@ public class Wallet : MonoBehaviour
     {
         walletText.text = amount.ToString();
     }
+}
 }

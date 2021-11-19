@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Assets_29_06_2021.Assets.z_others
+{
 public class ToDos : MonoBehaviour { }
+}
 
 /*
  *

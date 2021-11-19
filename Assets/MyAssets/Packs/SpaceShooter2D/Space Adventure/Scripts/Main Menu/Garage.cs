@@ -1,8 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
+using MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.UI;
 using TMPro;
+using UnityEngine;
 
+namespace MyAssets.Packs.SpaceShooter2D.Space_Adventure.Scripts.Main_Menu
+{
 public class Garage : MonoBehaviour
 {
     public GameObject buyButton, addButton, removeButton;
@@ -209,4 +211,5 @@ public class Garage : MonoBehaviour
     {
         button.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
     }
+}
 }

@@ -3,29 +3,59 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    
-    private static GameManager instance;
-    public static GameManager Instance => instance;
-    
+
     private int score;
+    private int enemiesCount;
     private int currentDifficulty;
     private string difficultyLevel;
-    public bool finalBossDestroyed;
+    
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
+
+    private EnemiesSpawner enemiesSpawner;
 
     private void Awake()
     {
-        instance = this;
-        if(instance == null) Debug.LogError("Game Manager instance is null");
+        _instance = this;
+        if(_instance == null) Debug.LogError("Game Manager instance is null");
         difficultyLevel = PlayerPrefs.GetString("Difficulty");
     }
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        Enemy.OnFinalBossDestroyed += FinalBossDestroyed;
         SetCurrentDifficulty();
+        enemiesSpawner = EnemiesSpawner.Instance;
     }
 
+    private void UpdateEnemyCount(int enemyAmount)
+    {
+        enemiesCount += enemyAmount;
+       
+        if(enemiesCount == 0) 
+            enemiesSpawner.StartNewWave();
+    }
+
+    public int GetEnemiesAmount()
+    {
+        return enemiesCount;
+    }
+
+    public void OnEnemyCreated(int enemiesAmount)
+    {
+        UpdateEnemyCount(enemiesAmount);
+    }
+    
+    public void OnEnemyDestroyed(int enemyAmount)
+    {
+        UpdateEnemyCount(enemyAmount);
+    }
+    
+    public void OnPlayerScored(int enemyAmount, int scoreValue)
+    {
+        UpdateEnemyCount(enemyAmount);
+        UIManager.Instance.UpdateScore(scoreValue);
+    }
 
     private void SetCurrentDifficulty()
     {
