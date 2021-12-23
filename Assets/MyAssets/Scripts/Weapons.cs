@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
     [SerializeField] private GameObject[] laserPositions;
     [SerializeField] private int weaponsNumber;
+    [SerializeField] private int maxWeapons;
     [SerializeField] private float shootCooldown;
 
     private float timeForNextShoot;
@@ -12,6 +14,15 @@ public class Weapons : MonoBehaviour
     public static Weapons Instance => instance;
 
     private void Awake() => instance = this;
+
+    private void OnEnable() => Powerup.PowerupGot += IncreaseWeapons;
+    private void OnDisable() => Powerup.PowerupGot -= IncreaseWeapons;
+
+    private void IncreaseWeapons()
+    {
+        if (weaponsNumber > maxWeapons) return;
+        weaponsNumber++;
+    }
 
     private void Start()
     {

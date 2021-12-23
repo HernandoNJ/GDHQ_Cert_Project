@@ -4,12 +4,22 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private int playerLives = 2;
+    [SerializeField] private int maxPlayerLives;
     [SerializeField] private Vector2 startPosition;
     
     private UIManager uiManager;
     private GameManager gameManager;
     
     public int scoreToUpdate;
+
+    private void OnEnable() => Powerup.PowerupGot += IncreaseLives;
+    private void OnDisable() => Powerup.PowerupGot -= IncreaseLives;
+
+    private void IncreaseLives()
+    {
+        if (playerLives > maxPlayerLives) return;
+        playerLives++;
+    }
 
     private void Start()
     {
