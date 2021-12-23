@@ -12,14 +12,8 @@ public class Player : MonoBehaviour
     
     public int scoreToUpdate;
 
-    private void OnEnable() => Powerup.PowerupGot += IncreaseLives;
-    private void OnDisable() => Powerup.PowerupGot -= IncreaseLives;
-
-    private void IncreaseLives()
-    {
-        if (playerLives > maxPlayerLives) return;
-        playerLives++;
-    }
+    private void OnEnable() => Powerup.PowerupGot += PowerupCollected;
+    private void OnDisable() => Powerup.PowerupGot -= PowerupCollected;
 
     private void Start()
     {
@@ -32,10 +26,8 @@ public class Player : MonoBehaviour
     private void Update()
     {
         MovePlayer();
-
-        if (Input.GetKeyDown(KeyCode.Space)) Shoot();
-        if (Input.GetKeyDown(KeyCode.T)) WeaponPowerup(1);
-        if (Input.GetKeyDown(KeyCode.Y)) TestScoreUI();
+        if (Input.GetKeyDown(KeyCode.Space)) 
+            Shoot();
     }
 
     private void MovePlayer()
@@ -50,10 +42,11 @@ public class Player : MonoBehaviour
 
     private void Shoot() => Weapons.Instance.ShootLaser();
 
-    private void WeaponPowerup(int value)
+    private void PowerupCollected()
     {
+        if (playerLives > maxPlayerLives) return;
         playerLives++;
-        Weapons.Instance.UpdateActiveWeapons(value);
+        Weapons.Instance.UpdateActiveWeapons(1);
     }
 
     public void Damage(int value)
@@ -62,12 +55,5 @@ public class Player : MonoBehaviour
         Weapons.Instance.UpdateActiveWeapons(-value);
 
         if (playerLives == 0) gameManager.GameOver();
-    }
-
-    // TODO just for testing. remove later
-    private void TestScoreUI()
-    {
-        scoreToUpdate += 10;
-        UIManager.Instance.UpdateScore(scoreToUpdate);
     }
 }

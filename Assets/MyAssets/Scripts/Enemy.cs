@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,10 +12,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private bool isEnemyLevel1;
     [SerializeField] private bool isMidBoss;
     [SerializeField] private bool isFinalBoss;
+    [SerializeField] private bool hasPowerup;
 
     [SerializeField] private Animator animController;
     [SerializeField] private GameObject laserPrefab;
     [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private GameObject powerupPrefab;
     [SerializeField] private Transform[] firePoints;
 
     [SerializeField] private GameManager gameManager;
@@ -42,7 +44,8 @@ public class Enemy : MonoBehaviour
         
         animController = GetComponent<Animator>();
         animController.SetTrigger("animTrigger"+animTriggerIndex);
-        
+
+        hasPowerup = Random.value > 0.5f;
         shootEnabled = true;
         if (isEnemyLevel1) isVulnerable = false;
 
@@ -69,7 +72,11 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            if (isEnemyLevel1) PlayerScored(-1, 1);
+            if (isEnemyLevel1)
+            {
+                if (hasPowerup) Instantiate(powerupPrefab, transform.position, Quaternion.identity);
+                PlayerScored(-1, 1);
+            }
             else if (isMidBoss) PlayerScored(-1, 10);
             else if (isFinalBoss)
             {

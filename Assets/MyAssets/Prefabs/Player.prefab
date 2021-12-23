@@ -144,8 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9edb1bbc403be408b0546ece5ab808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  health: 50
+  speed: 8.5
+  playerLives: 20
+  maxPlayerLives: 0
   startPosition: {x: -7, y: 0}
   scoreToUpdate: 0
 --- !u!1 &2555797711162299085
@@ -284,7 +285,8 @@ MonoBehaviour:
   - {fileID: 2555797712522970946}
   - {fileID: 2555797710847957085}
   weaponsNumber: 0
-  shootCooldown: 0.03
+  maxWeapons: 0
+  shootCooldown: 0.01
 --- !u!1 &2555797712070989212
 GameObject:
   m_ObjectHideFlags: 0

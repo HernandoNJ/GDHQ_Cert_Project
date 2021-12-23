@@ -7,17 +7,16 @@ public class Powerup : MonoBehaviour
     [SerializeField] private int weaponIncrement;
 
     public static event Action PowerupGot;
-    
+
     private void Start()
     {
-        Destroy(gameObject,3.0f);
+        Destroy(gameObject, 3.0f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-           PowerupGot?.Invoke(); 
-        }
+        if (!other.CompareTag("Player")) return;
+        PowerupGot?.Invoke();
+        Destroy(gameObject);
     }
 }
