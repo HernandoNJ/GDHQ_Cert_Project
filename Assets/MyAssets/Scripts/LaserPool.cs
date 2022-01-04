@@ -24,9 +24,9 @@ public class LaserPool : MonoBehaviour
     {
         for (int i = 0; i < lasersPoolAmount; i++)
         {
-            var tmpLaser = Instantiate(laserPrefab, lasersParent.transform, true);
-            tmpLaser.SetActive(false);
-            pooledLasers.Add(tmpLaser);
+            var tempLaser = Instantiate(laserPrefab, lasersParent.transform, true);
+            tempLaser.SetActive(false);
+            pooledLasers.Add(tempLaser);
         }
     }
 
@@ -35,12 +35,9 @@ public class LaserPool : MonoBehaviour
         for (int i = 0; i < lasersPoolAmount; i++)
         {
             if (!pooledLasers[i].activeInHierarchy) return pooledLasers[i];
+            if(pooledLasers[i] == null) Debug.LogWarning("Laser pool is null");
         }
-
+        
         return null;
     }
-
-
-
-
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LaserEnemy : MonoBehaviour
@@ -5,10 +6,13 @@ public class LaserEnemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Transform laserParent;
 
+    public static event Action OnPlayerDamaged;
+    
     private void Start()
     {
         laserParent = GameObject.Find("SpawnedObjectsParent").GetComponent<Transform>();
         transform.SetParent(laserParent);
+        Destroy(gameObject, 3f);
     }
 
     private void Update()
@@ -20,11 +24,13 @@ public class LaserEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            var player = other.GetComponent<Player>();
-            if (player != null) player.Damage(1);
+            OnPlayerDamaged?.Invoke();
             Destroy(gameObject);
         }
-        else if (other.CompareTag("Laser")) other.gameObject.SetActive(false);
-        else if(other.gameObject.name == "LeftCollider") gameObject.SetActive(false);
+        else if (other.CompareTag("Laser"))
+        {
+            other.gameObject.SetActive(false);
+            Destroy(gameObject);
+        }
     }
 }

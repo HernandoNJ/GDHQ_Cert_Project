@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -22,8 +23,12 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameManager gameManager;
     [SerializeField] private EnemiesSpawner enemiesSpawner;
+    
     private int health;
 
+    public static event Action OnPlayerDamaged;
+    public static event Action OnBossPlayerDamage;
+    
     // TODO Create enemies animations with EnemyAnim + 1,2,3,4...etc  enemyAnimController
     // TODO enemies with powerups
     // TODO set mid boss and final boss movement with animation and shooting 
@@ -86,12 +91,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void EnemyDestroyed(int enemiesAmount)
-    {
-        gameManager.OnEnemyDestroyed(enemiesAmount);
-        Destroy(gameObject);
-    }
-
+    
     private void PlayerScored(int enemiesAmount, int score)
     {
         gameManager.OnPlayerScored(enemiesAmount, score);
@@ -129,12 +129,12 @@ public class Enemy : MonoBehaviour
             {
                 if (isEnemyLevel1)
                 {
-                    player.Damage(damageAmount);
+                    OnPlayerDamaged?.Invoke();
                     Damage();
                 }
                 else if (isMidBoss || isFinalBoss)
                 {
-                    player.Damage(damageAmount * 2);
+                    OnBossPlayerDamage?.Invoke();
                     Damage();
                 }
             }
@@ -149,6 +149,12 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(shootCooldown);
             Shoot();
         }
+    }
+    
+    private void EnemyDestroyed(int enemiesAmount)
+    {
+        gameManager.OnEnemyDestroyed(enemiesAmount);
+        Destroy(gameObject);
     }
 
     private void OnDisable()

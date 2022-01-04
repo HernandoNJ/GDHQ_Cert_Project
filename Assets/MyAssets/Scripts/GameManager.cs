@@ -66,6 +66,8 @@ public class GameManager : MonoBehaviour
     }
 
     // TODO add to Game Over or Quit functions
+    // TODO create Game UI
+    
     private void StoreScore()
     {
         PlayerPrefs.SetInt("Score", score);

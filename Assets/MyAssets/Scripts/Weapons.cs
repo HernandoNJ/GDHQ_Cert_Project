@@ -1,10 +1,9 @@
-using System;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
     [SerializeField] private GameObject[] laserPositions;
-    [SerializeField] private int weaponsNumber;
+    [SerializeField] private int weaponsAmount;
     [SerializeField] private int maxWeapons;
     [SerializeField] private float shootCooldown;
 
@@ -15,36 +14,67 @@ public class Weapons : MonoBehaviour
 
     private void Awake() => instance = this;
 
-    private void OnEnable() => Powerup.PowerupGot += IncreaseWeapons;
-    private void OnDisable() => Powerup.PowerupGot -= IncreaseWeapons;
-
-    private void IncreaseWeapons()
+    private void OnEnable()
     {
-        if (weaponsNumber > maxWeapons) return;
-        weaponsNumber++;
+        Powerup.PowerupGot += IncreaseWeapons;
+        LaserEnemy.OnPlayerDamaged += DecreaseWeapons;
+        Enemy.OnPlayerDamaged += DecreaseWeapons;
+        Enemy.OnBossPlayerDamage += DecreaseWeapons;
+    }
+
+    private void OnDisable()
+    {
+        Powerup.PowerupGot -= IncreaseWeapons;
+        LaserEnemy.OnPlayerDamaged -= DecreaseWeapons;
+        Enemy.OnPlayerDamaged -= DecreaseWeapons;
+        Enemy.OnBossPlayerDamage -= DecreaseWeapons;
     }
 
     private void Start()
     {
         CheckIfWeaponsNull();
         DisableWeaponPositions();
-        weaponsNumber = 1;
-        ActivateWeaponPositions();
+        weaponsAmount = 1;
+        UpdateWeaponPositions();
     }
 
     private void CheckIfWeaponsNull()
     {
         if (instance == null) Debug.LogWarning("PlayerWeapons is null");
     }
-    
+
     private void DisableWeaponPositions()
     {
-        foreach (var laserPos in laserPositions) laserPos.SetActive(false); 
+        foreach (var laserPos in laserPositions) laserPos.SetActive(false);
     }
 
-    private void ActivateWeaponPositions()
+    private void IncreaseWeapons()
     {
-        switch (weaponsNumber)
+        weaponsAmount++;
+        if (weaponsAmount > maxWeapons)
+        {
+            weaponsAmount = maxWeapons;
+            return;
+        }
+        
+        UpdateWeaponPositions();
+    }
+
+    private void DecreaseWeapons()
+    {
+        weaponsAmount--;
+        if (weaponsAmount < 1)
+        {
+            weaponsAmount = 1;
+            return;
+        }
+        
+        UpdateWeaponPositions();
+    }
+
+    private void UpdateWeaponPositions()
+    {
+        switch (weaponsAmount)
         {
             case 1:
                 laserPositions[0].SetActive(true);
@@ -55,13 +85,17 @@ public class Weapons : MonoBehaviour
                 laserPositions[0].SetActive(false);
                 laserPositions[1].SetActive(true);
                 laserPositions[2].SetActive(true);
+                shootCooldown = 0.1f;
                 break;
             case 3:
                 laserPositions[0].SetActive(true);
                 laserPositions[1].SetActive(true);
                 laserPositions[2].SetActive(true);
+                shootCooldown = 0.5f;
                 break;
         }
+
+        Debug.Log($"weapons number updated. weapons number: {weaponsAmount}");
     }
 
     public void ShootLaser()
@@ -75,20 +109,12 @@ public class Weapons : MonoBehaviour
                 if (laserPos.activeInHierarchy)
                 {
                     GameObject laser = LaserPool.sharedInstance.GetPooledLaser();
+
                     laser.transform.position = laserPos.transform.position;
                     laser.transform.rotation = laserPos.transform.rotation;
                     laser.SetActive(true);
                 }
             }
         }
-    }
-
-    /// <summary> Increase or reduce the number of weapons </summary>
-    /// <param name="value"></param>
-    public void UpdateActiveWeapons(int value)
-    {
-        if (weaponsNumber is >= 3 or <= 1) return;
-        weaponsNumber += value;
-        ActivateWeaponPositions();
     }
 }

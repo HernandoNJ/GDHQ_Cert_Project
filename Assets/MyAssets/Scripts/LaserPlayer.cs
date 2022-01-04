@@ -17,7 +17,6 @@ public class LaserPlayer : MonoBehaviour
             if(enemy != null) enemy.Damage();
             gameObject.SetActive(false);
         }
-        else if (other.CompareTag("Laser")) Destroy(other.gameObject);
         else if (other.gameObject.name == "RightCollider") gameObject.SetActive(false);
     }
 }

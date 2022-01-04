@@ -6,14 +6,27 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerLives = 2;
     [SerializeField] private int maxPlayerLives;
     [SerializeField] private Vector2 startPosition;
-    
+
     private UIManager uiManager;
     private GameManager gameManager;
-    
+
     public int scoreToUpdate;
 
-    private void OnEnable() => Powerup.PowerupGot += PowerupCollected;
-    private void OnDisable() => Powerup.PowerupGot -= PowerupCollected;
+    private void OnEnable()
+    {
+        Powerup.PowerupGot += PowerupCollected;
+        LaserEnemy.OnPlayerDamaged += PlayerDamaged;
+        Enemy.OnPlayerDamaged += PlayerDamaged;
+        Enemy.OnBossPlayerDamage += BossDamagedPlayer;
+    }
+
+    private void OnDisable()
+    {
+        Powerup.PowerupGot -= PowerupCollected;
+        LaserEnemy.OnPlayerDamaged -= PlayerDamaged;
+        Enemy.OnPlayerDamaged -= PlayerDamaged;
+        Enemy.OnBossPlayerDamage -= BossDamagedPlayer;
+    }
 
     private void Start()
     {
@@ -26,7 +39,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         MovePlayer();
-        if (Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetKeyDown(KeyCode.Space))
             Shoot();
     }
 
@@ -46,14 +59,18 @@ public class Player : MonoBehaviour
     {
         if (playerLives > maxPlayerLives) return;
         playerLives++;
-        Weapons.Instance.UpdateActiveWeapons(1);
+        Debug.Log($"Powerup collected. lives: {playerLives}");
     }
 
-    public void Damage(int value)
+    private void PlayerDamaged()
     {
-        playerLives -= value;
-        Weapons.Instance.UpdateActiveWeapons(-value);
-
+        playerLives -= 1;
+        Debug.Log($"Player damaged. lives: {playerLives}");
         if (playerLives == 0) gameManager.GameOver();
+    }
+
+    private void BossDamagedPlayer()
+    {
+        Debug.Log("Boss damaged Player");
     }
 }
