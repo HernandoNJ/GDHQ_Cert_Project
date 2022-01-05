@@ -5,41 +5,47 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private int damageAmount;
-    [SerializeField] private int animTriggerIndex;
-    [SerializeField] private float shootCooldown;
-    [SerializeField] private bool isVulnerable;
-    [SerializeField] private bool shootEnabled;
-    [SerializeField] private bool isEnemyLevel1;
-    [SerializeField] private bool isMidBoss;
-    [SerializeField] private bool isFinalBoss;
-    [SerializeField] private bool hasPowerup;
-
-    [SerializeField] private Animator animController;
-    [SerializeField] private GameObject laserPrefab;
-    [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private GameObject powerupPrefab;
-    [SerializeField] private Transform[] firePoints;
-
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private EnemiesSpawner enemiesSpawner;
+    [SerializeField] protected int animTriggerIndex;
+    [SerializeField] protected float shootCooldown;
+    [SerializeField] protected bool isVulnerable;
+    [SerializeField] protected bool shootEnabled;
+    [SerializeField] protected bool isEnemyLevel1;
+    [SerializeField] protected bool isMidBoss;
+    [SerializeField] protected bool isFinalBoss;
+    [SerializeField] protected bool playerDestroyed;
+    [SerializeField] protected bool hasPowerup;
+    [SerializeField] protected Animator animController;
+    [SerializeField] protected GameObject laserPrefab;
+    [SerializeField] protected GameObject explosionPrefab;
+    [SerializeField] protected GameObject powerupPrefab;
+    [SerializeField] protected Transform[] firePoints;
+    [SerializeField] protected GameManager gameManager;
+    [SerializeField] protected EnemiesSpawner enemiesSpawner;
     
-    private int health;
+    protected int health;
 
     public static event Action OnPlayerDamaged;
     public static event Action OnBossPlayerDamage;
     
-    // TODO Create enemies animations with EnemyAnim + 1,2,3,4...etc  enemyAnimController
-    // TODO enemies with powerups
-    // TODO set mid boss and final boss movement with animation and shooting 
-
     private void OnEnable()
     {
         enemiesSpawner = FindObjectOfType<EnemiesSpawner>();
         animTriggerIndex = enemiesSpawner.GetCurrentWave();
+        GameManager.OnGameOver += PlayerDestroyed;
+    }
+    
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+        GameManager.OnGameOver -= PlayerDestroyed;
+    }
+    
+    private void Start()
+    {
+        SetInitialValues();
     }
 
-    private void Start()
+    protected virtual void SetInitialValues()
     {
         isEnemyLevel1 = CompareTag("Enemy");
         isMidBoss = CompareTag("MidBoss");
@@ -57,7 +63,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(ShootingRoutine());
     }
 
-    private void Shoot()
+    protected void Shoot()
     {
         if (shootEnabled == false) return;
 
@@ -142,9 +148,9 @@ public class Enemy : MonoBehaviour
         else if (other.gameObject.name == "LeftCollider") EnemyDestroyed(-1);
     }
 
-    private IEnumerator ShootingRoutine()
+    protected virtual IEnumerator ShootingRoutine()
     {
-        while (gameObject.activeInHierarchy)
+        while (gameObject.activeInHierarchy && playerDestroyed == false)
         {
             yield return new WaitForSeconds(shootCooldown);
             Shoot();
@@ -157,8 +163,10 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDisable()
+    private void PlayerDestroyed()
     {
-        StopAllCoroutines();
+        playerDestroyed = true;
     }
+    
+ 
 }

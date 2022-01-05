@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.Mathematics;
 using UnityEngine;
@@ -18,11 +19,21 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private Vector2 enemyStartPos;
     
     [SerializeField] private int maxEnemies;
-    [SerializeField] private int enemiesCreated; // for testing
-    [SerializeField] private int enemiesCount; // for testing
-
+    [SerializeField] private int enemiesCreated;
+    [SerializeField] private bool playerDestroyed;
+    
     private static EnemiesSpawner instance;
     public static EnemiesSpawner Instance => instance;
+
+    private void OnEnable()
+    {
+        GameManager.OnGameOver += PlayerDestroyed;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnGameOver -= PlayerDestroyed;
+    }
 
     private void Start()
     {
@@ -57,7 +68,7 @@ public class EnemiesSpawner : MonoBehaviour
         maxEnemies = currentEnemyWaveData.maxEnemies;
         enemyPrefab = currentEnemyWaveData.enemyPrefab;
 
-        while (enemiesCreated < maxEnemies)
+        while (enemiesCreated < maxEnemies && playerDestroyed == false)
         {
             Instantiate(enemyPrefab, enemyStartPos, quaternion.identity);
             enemiesCreated++;
@@ -65,5 +76,10 @@ public class EnemiesSpawner : MonoBehaviour
             
             yield return new WaitForSeconds(1);
         }
+    }
+    
+    private void PlayerDestroyed()
+    {
+        playerDestroyed = true;
     }
 }

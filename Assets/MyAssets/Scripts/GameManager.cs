@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,12 +9,15 @@ public class GameManager : MonoBehaviour
     private int enemiesCount;
     private int currentDifficulty;
     private string difficultyLevel;
+    private bool isGameOver;
     
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
     private EnemiesSpawner enemiesSpawner;
 
+    public static event Action OnGameOver;
+    
     private void Awake()
     {
         _instance = this;
@@ -76,10 +80,12 @@ public class GameManager : MonoBehaviour
     public void FinalBossDestroyed()
     {
         Debug.LogWarning("Final boss destroyed");
+        GameOver();
     }
 
     public void GameOver()
     {
+        OnGameOver?.Invoke();
         Debug.Log("Game over");
         StoreScore();
         player.SetActive(false);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,8 @@ public class Player : MonoBehaviour
     private UIManager uiManager;
     private GameManager gameManager;
 
+    public static event Action OnPlayerShooting;
+    
     public int scoreToUpdate;
 
     private void OnEnable()
@@ -53,7 +56,7 @@ public class Player : MonoBehaviour
         transform.Translate(moveVH.normalized * speed * Time.deltaTime);
     }
 
-    private void Shoot() => Weapons.Instance.ShootLaser();
+    private void Shoot() => OnPlayerShooting?.Invoke();
 
     private void PowerupCollected()
     {
