@@ -17,18 +17,18 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-        Powerup.PowerupGot += PowerupCollected;
+        Powerup.OnPowerupGot += PowerupGot;
         LaserEnemy.OnPlayerDamaged += PlayerDamaged;
-        Enemy.OnPlayerDamaged += PlayerDamaged;
-        Enemy.OnBossPlayerDamage += BossDamagedPlayer;
+        Enemy.OnEnemyL1DamagedPlayer += PlayerDamaged;
+        Enemy.OnBossDamagedPlayer += BossDamagedPlayer;
     }
 
     private void OnDisable()
     {
-        Powerup.PowerupGot -= PowerupCollected;
+        Powerup.OnPowerupGot -= PowerupGot;
         LaserEnemy.OnPlayerDamaged -= PlayerDamaged;
-        Enemy.OnPlayerDamaged -= PlayerDamaged;
-        Enemy.OnBossPlayerDamage -= BossDamagedPlayer;
+        Enemy.OnEnemyL1DamagedPlayer -= PlayerDamaged;
+        Enemy.OnBossDamagedPlayer -= BossDamagedPlayer;
     }
 
     private void Start()
@@ -42,8 +42,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         MovePlayer();
-        if (Input.GetKeyDown(KeyCode.Space))
-            Shoot();
+        if (Input.GetKeyDown(KeyCode.Space)) Shoot();
     }
 
     private void MovePlayer()
@@ -58,7 +57,7 @@ public class Player : MonoBehaviour
 
     private void Shoot() => OnPlayerShooting?.Invoke();
 
-    private void PowerupCollected()
+    private void PowerupGot()
     {
         if (playerLives > maxPlayerLives) return;
         playerLives++;
@@ -67,6 +66,7 @@ public class Player : MonoBehaviour
 
     private void PlayerDamaged()
     {
+        // TODO reduce weapons
         playerLives -= 1;
         Debug.Log($"Player damaged. lives: {playerLives}");
         if (playerLives == 0) gameManager.GameOver();
@@ -74,6 +74,6 @@ public class Player : MonoBehaviour
 
     private void BossDamagedPlayer()
     {
-        Debug.Log("Boss damaged Player");
+        Debug.Log("Boss damaged Player x 2");
     }
 }

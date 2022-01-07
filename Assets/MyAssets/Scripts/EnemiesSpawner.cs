@@ -21,6 +21,8 @@ public class EnemiesSpawner : MonoBehaviour
     [SerializeField] private int maxEnemies;
     [SerializeField] private int enemiesCreated;
     [SerializeField] private bool playerDestroyed;
+
+    public static event Action OnBossWaveStarted;
     
     private static EnemiesSpawner instance;
     public static EnemiesSpawner Instance => instance;
@@ -52,6 +54,7 @@ public class EnemiesSpawner : MonoBehaviour
     public void StartNewWave()
     {
         currentWave++;
+        if(currentWave is 7 or 13) OnBossWaveStarted?.Invoke();
         
         if (currentWave < maxWaves)
         {

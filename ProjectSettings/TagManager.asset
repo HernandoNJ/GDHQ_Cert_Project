@@ -10,6 +10,8 @@ TagManager:
   - Enemy
   - MidBoss
   - FinalBoss
+  - EnemyLaser
+  - EnemyLevel1
   layers:
   - Default
   - TransparentFX

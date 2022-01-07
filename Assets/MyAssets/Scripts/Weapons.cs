@@ -1,19 +1,23 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
     [SerializeField] protected GameObject[] weaponsPositions;
-    [SerializeField] protected int weaponsAmount;
-    [SerializeField] protected int maxWeapons;
+    [SerializeField] protected List<GameObject> weaponsPrefabs;
+    [SerializeField] protected int weaponsIndex;
+    [SerializeField] protected int minWeaponsIndex;
+    [SerializeField] protected int maxWeaponsIndex;
     [SerializeField] protected float shootCooldown;
+    [SerializeField] protected float timeForNextShoot;
 
-    protected float timeForNextShoot;
-
-    protected void Start()
+    protected virtual void Start()
     {
         DisableWeaponPositions();
-        weaponsAmount = 1;
-        UpdateWeaponPositions();
+        minWeaponsIndex = 0;
+        maxWeaponsIndex = 2;
+        weaponsIndex = minWeaponsIndex;
+        UpdateWeaponPositions(weaponsIndex);
     }
 
     private void DisableWeaponPositions()
@@ -23,51 +27,60 @@ public class Weapons : MonoBehaviour
 
     protected void IncreaseWeapons()
     {
-        weaponsAmount++;
-        if (weaponsAmount > maxWeapons)
+        weaponsIndex++;
+        if (weaponsIndex > maxWeaponsIndex)
         {
-            weaponsAmount = maxWeapons;
+            weaponsIndex = maxWeaponsIndex;
             return;
         }
         
-        UpdateWeaponPositions();
+        UpdateWeaponPositions(weaponsIndex);
     }
 
     protected void DecreaseWeapons()
     {
-        weaponsAmount--;
-        if (weaponsAmount < 1)
+        weaponsIndex--;
+        if (weaponsIndex < minWeaponsIndex)
         {
-            weaponsAmount = 1;
+            weaponsIndex = minWeaponsIndex;
             return;
         }
         
-        UpdateWeaponPositions();
+        UpdateWeaponPositions(weaponsIndex);
     }
 
-    private void UpdateWeaponPositions()
+    protected void UpdateWeaponPositions(int indexArg)
     {
-        switch (weaponsAmount)
+        switch (indexArg)
         {
-            case 1:
+            case 0:
                 weaponsPositions[0].SetActive(true);
                 weaponsPositions[1].SetActive(false);
                 weaponsPositions[2].SetActive(false);
                 break;
-            case 2:
+            case 1:
                 weaponsPositions[0].SetActive(false);
                 weaponsPositions[1].SetActive(true);
                 weaponsPositions[2].SetActive(true);
-                shootCooldown = 0.1f;
                 break;
-            case 3:
+            case 2:
                 weaponsPositions[0].SetActive(true);
                 weaponsPositions[1].SetActive(true);
                 weaponsPositions[2].SetActive(true);
-                shootCooldown = 0.5f;
                 break;
         }
+    }
 
-        Debug.Log($"weapons number updated. weapons number: {weaponsAmount}");
+    protected void SetCooldown()
+    {
+        if (Time.time > timeForNextShoot)
+        {
+            timeForNextShoot = Time.time + shootCooldown;
+        }
+    }
+
+    protected virtual void FireWeapons()
+    {
+        SetCooldown();
     }
 }

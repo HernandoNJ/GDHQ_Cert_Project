@@ -4,17 +4,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-
-    private int score;
-    private int enemiesCount;
-    private int currentDifficulty;
-    private string difficultyLevel;
-    private bool isGameOver;
+    [SerializeField] private int enemiesCount;
+    [SerializeField] private int score;
+    [SerializeField] private int currentDifficulty;
+    [SerializeField] private string difficultyLevel;
+    [SerializeField] private bool isGameOver; // TODO just for testing
+    
+    private EnemiesSpawner enemiesSpawner;
     
     private static GameManager _instance;
     public static GameManager Instance => _instance;
-
-    private EnemiesSpawner enemiesSpawner;
 
     public static event Action OnGameOver;
     
@@ -25,10 +24,21 @@ public class GameManager : MonoBehaviour
         difficultyLevel = PlayerPrefs.GetString("Difficulty");
     }
 
+    private void OnEnable()
+    {
+        Enemy.OnEnemyDestroyed += UpdateEnemiesCountScore;
+        Enemy.OnFinalBossDestroyed += FinalBossDestroyed;
+    }
+    
+    private void OnDisable()
+    {
+        Enemy.OnEnemyDestroyed -= UpdateEnemiesCountScore;
+        Enemy.OnFinalBossDestroyed -= FinalBossDestroyed;
+    }
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        SetCurrentDifficulty();
         enemiesSpawner = EnemiesSpawner.Instance;
     }
 
@@ -39,11 +49,8 @@ public class GameManager : MonoBehaviour
         if(enemiesCount == 0) 
             enemiesSpawner.StartNewWave();
     }
-
-    public int GetEnemiesAmount()
-    {
-        return enemiesCount;
-    }
+    
+    // TODO verify with events
 
     public void OnEnemyCreated(int enemiesAmount)
     {
@@ -54,8 +61,15 @@ public class GameManager : MonoBehaviour
     {
         UpdateEnemyCount(enemyAmount);
     }
+
+    private void UpdateEnemiesCountScore(int n, int scoreValueArg)
+    {
+        UpdateEnemyCount(-n);
+        score += scoreValueArg;
+        UIManager.Instance.UpdateScore(score);
+    }
     
-    public void OnPlayerScored(int enemyAmount, int scoreValue)
+    public void PlayerScored(int enemyAmount, int scoreValue)
     {
         UpdateEnemyCount(enemyAmount);
         UIManager.Instance.UpdateScore(scoreValue);
@@ -77,17 +91,20 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Score", score);
     }
 
-    public void FinalBossDestroyed()
+    private void FinalBossDestroyed()
     {
-        Debug.LogWarning("Final boss destroyed");
+        Debug.LogWarning("Final boss destroyed"); // TODO just for testing
+        Debug.Log("PLAYER WINS"); // TODO just for testing
         GameOver();
     }
 
     public void GameOver()
     {
+        Debug.Log("Game over"); // TODO just for testing
         OnGameOver?.Invoke();
-        Debug.Log("Game over");
+        isGameOver = true; // TODO just for testing
         StoreScore();
         player.SetActive(false);
+        Time.timeScale = 0.4f;
     }
 }

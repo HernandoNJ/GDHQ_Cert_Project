@@ -1,45 +1,50 @@
 using System;
-using System.Collections;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] protected int animTriggerIndex;
-    [SerializeField] protected float shootCooldown;
+    public enum EnemyState
+    {
+        Good,
+        Regular,
+        Bad
+    }
+    
     [SerializeField] protected bool isVulnerable;
-    [SerializeField] protected bool shootEnabled;
     [SerializeField] protected bool isEnemyLevel1;
     [SerializeField] protected bool isMidBoss;
     [SerializeField] protected bool isFinalBoss;
-    [SerializeField] protected bool playerDestroyed;
-    [SerializeField] protected bool hasPowerup;
-    [SerializeField] protected Animator animController;
-    [SerializeField] protected GameObject laserPrefab;
+    [SerializeField] protected int health;
+    [SerializeField] protected int enemyL1ScorePoints;
+    [SerializeField] protected int midBossScorePoints;
+    [SerializeField] protected int finalBossScorePoints;
+    
     [SerializeField] protected GameObject explosionPrefab;
     [SerializeField] protected GameObject powerupPrefab;
-    [SerializeField] protected Transform[] firePoints;
+    [SerializeField] protected GameObject shield;
+    [SerializeField] protected Animator animController;
+    [SerializeField] protected EnemiesSpawner enemiesSpawnerGO;
     [SerializeField] protected GameManager gameManager;
-    [SerializeField] protected EnemiesSpawner enemiesSpawner;
-    
-    protected int health;
 
-    public static event Action OnPlayerDamaged;
-    public static event Action OnBossPlayerDamage;
-    
+    public static event Action OnBossDamagedPlayer;
+    public static event Action<EnemyState> OnBossStateChanged;
+    public static event Action<int,int> OnEnemyDestroyed;
+    public static event Action OnFinalBossDestroyed;
+    public static event Action OnEnemyL1DamagedPlayer;
+    public static event Action<bool> OnShootingStateChanged;
+  
     private void OnEnable()
     {
-        enemiesSpawner = FindObjectOfType<EnemiesSpawner>();
-        animTriggerIndex = enemiesSpawner.GetCurrentWave();
-        GameManager.OnGameOver += PlayerDestroyed;
+        enemiesSpawnerGO = FindObjectOfType<EnemiesSpawner>();
+        GameManager.OnGameOver += UpdateShooting;
     }
-    
+
     private void OnDisable()
     {
         StopAllCoroutines();
-        GameManager.OnGameOver -= PlayerDestroyed;
+        GameManager.OnGameOver -= UpdateShooting;
     }
-    
+
     private void Start()
     {
         SetInitialValues();
@@ -47,66 +52,86 @@ public class Enemy : MonoBehaviour
 
     protected virtual void SetInitialValues()
     {
-        isEnemyLevel1 = CompareTag("Enemy");
-        isMidBoss = CompareTag("MidBoss");
-        isFinalBoss = CompareTag("FinalBoss");
-        
         gameManager = GameManager.Instance;
-        
         animController = GetComponent<Animator>();
-        animController.SetTrigger("animTrigger"+animTriggerIndex);
-
-        hasPowerup = Random.value > 0.5f;
-        shootEnabled = true;
-        if (isEnemyLevel1) isVulnerable = false;
-
-        StartCoroutine(ShootingRoutine());
+        OnShootingStateChanged?.Invoke(true);
+        CheckBossTag();
     }
 
-    protected void Shoot()
+    private void CheckBossTag()
     {
-        if (shootEnabled == false) return;
-
-        if (isEnemyLevel1) Instantiate(laserPrefab, firePoints[0].position, Quaternion.identity);
-
-        if (isMidBoss || isFinalBoss)
+        if (gameObject.CompareTag("EnemyLevel1")) isEnemyLevel1 = true;
+        else if (gameObject.CompareTag("MidBoss")) isMidBoss = true;
+        else if (gameObject.CompareTag("FinalBoss")) isFinalBoss = true;
+        else Debug.LogWarning("Set a valid enemy tag");
+    }
+    
+    protected void SetEnemyVulnerable(bool isVulnerableArg)
+    {
+        isVulnerable = isVulnerableArg;
+    }
+    
+    protected void UpdateBossState(EnemyState enemyStateArg)
+    {
+        switch (enemyStateArg)
         {
-            foreach (var point in firePoints) { Instantiate(laserPrefab, point.position, Quaternion.identity); }
+            case EnemyState.Good:
+                UpdateBossState2(Color.green, 1f,enemyStateArg);
+                break;
+            case EnemyState.Regular:
+                UpdateBossState2(Color.yellow, 1.2f,enemyStateArg);
+                break;
+            case EnemyState.Bad:
+                UpdateBossState2(Color.red, 1.4f,enemyStateArg);
+                break;
+            default:
+                Debug.LogWarning("Set a valid value in UpdateMidBossState");
+                break;
         }
     }
 
-    public void Damage()
+    private void UpdateBossState2(Color colorArg, float animSpeed, EnemyState enemyStateValue)
+    {
+        shield.GetComponent<Renderer>().material.color = colorArg;
+        animController.speed = animSpeed;
+        OnBossStateChanged?.Invoke(enemyStateValue);
+    }
+    
+    protected virtual void Damage()
     {
         if (isVulnerable == false) return;
-
         health--;
 
-        if (health <= 0)
+        if (health > 0)
         {
-            if (isEnemyLevel1)
+            if(isEnemyLevel1) Debug.Log("Enemy L1 damaged"); // TODO just for testing
+            else if (isMidBoss || isFinalBoss)
             {
-                if (hasPowerup) Instantiate(powerupPrefab, transform.position, Quaternion.identity);
-                PlayerScored(-1, 1);
+                if (health is < 30 and > 10) UpdateBossState(EnemyState.Regular);
+                else if (health < 10) UpdateBossState(EnemyState.Bad);
             }
-            else if (isMidBoss) PlayerScored(-1, 10);
-            else if (isFinalBoss)
-            {
-                PlayerScored(-1, 30);
-                gameManager.FinalBossDestroyed();
-            }
+        }
+        else
+        {
+            EnemyDestroyed();
+            OnEnemyDestroyed?.Invoke(1, SetScorePoints());
+            if(isFinalBoss) OnFinalBossDestroyed?.Invoke();
         }
     }
 
-    
-    private void PlayerScored(int enemiesAmount, int score)
-    {
-        gameManager.OnPlayerScored(enemiesAmount, score);
-        ExplodeEnemy();
-    }
+    public void LaserDamagedEnemy() => Damage();
 
-    private void ExplodeEnemy()
+    private void EnemyDestroyed()
     {
         DisableComponents();
+        
+        if(isEnemyLevel1 || isMidBoss) OnEnemyDestroyed?.Invoke(1,SetScorePoints());
+        else if (isFinalBoss)
+        {
+            OnEnemyDestroyed?.Invoke(1,SetScorePoints());
+            OnFinalBossDestroyed?.Invoke();
+        }
+        
         var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(explosion, 0.5f);
         Destroy(gameObject, 0.7f);
@@ -114,59 +139,40 @@ public class Enemy : MonoBehaviour
 
     private void DisableComponents()
     {
-        shootEnabled = false;
+        OnShootingStateChanged?.Invoke(false);
         GetComponent<Animator>().enabled = false;
         GetComponentInChildren<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "ActivateEnemiesCollider")
-        {
-            if (isEnemyLevel1) isVulnerable = true;
-        }
-
-        else if (other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             var player = other.GetComponent<Player>();
 
             if (player != null)
             {
-                if (isEnemyLevel1)
-                {
-                    OnPlayerDamaged?.Invoke();
-                    Damage();
-                }
-                else if (isMidBoss || isFinalBoss)
-                {
-                    OnBossPlayerDamage?.Invoke();
-                    Damage();
-                }
+                if (isEnemyLevel1) OnEnemyL1DamagedPlayer?.Invoke();
+                else if (isMidBoss || isFinalBoss) OnBossDamagedPlayer?.Invoke();
+
+                Damage();
             }
         }
-        else if (other.gameObject.name == "LeftCollider") EnemyDestroyed(-1);
-    }
-
-    protected virtual IEnumerator ShootingRoutine()
-    {
-        while (gameObject.activeInHierarchy && playerDestroyed == false)
-        {
-            yield return new WaitForSeconds(shootCooldown);
-            Shoot();
-        }
+        else if (other.gameObject.name == "LeftCollider") EnemyDestroyed();
     }
     
-    private void EnemyDestroyed(int enemiesAmount)
+    private int SetScorePoints()
     {
-        gameManager.OnEnemyDestroyed(enemiesAmount);
-        Destroy(gameObject);
+        var scorePoints = 0;
+        if (isEnemyLevel1) scorePoints =  enemyL1ScorePoints;
+        if (isMidBoss) scorePoints = midBossScorePoints;
+        if (isFinalBoss) scorePoints = finalBossScorePoints;
+        return scorePoints;
     }
 
-    private void PlayerDestroyed()
+    private void UpdateShooting()
     {
-        playerDestroyed = true;
+        OnShootingStateChanged?.Invoke(false);
     }
-    
- 
 }
