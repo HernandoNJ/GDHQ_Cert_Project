@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4362133406018038982}
   - component: {fileID: 4362133406018038983}
   - component: {fileID: 4362133406018038980}
-  - component: {fileID: 2764417054038403727}
   - component: {fileID: 4720747915646830821}
   - component: {fileID: 381275886960158201}
+  - component: {fileID: 5816586042569009685}
   m_Layer: 0
-  m_Name: Powerup
+  m_Name: MidBossPowerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,23 +108,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2764417054038403727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4362133406018039002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22e101b37c7547f4fb393a21a9a3b20a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthIncrement: 1
-  weaponIncrement: 1
-  forceDirection: {x: 0, y: 0}
-  rb: {fileID: 0}
-  moveEnabled: 0
 --- !u!60 &4720747915646830821
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -192,3 +175,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5816586042569009685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4362133406018039002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e84ae7eaa068ed488d91115023795f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -24,13 +24,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected GameObject shield;
     [SerializeField] protected Animator animController;
     [SerializeField] protected EnemiesSpawner enemiesSpawnerGO;
-    [SerializeField] protected GameManager gameManager;
 
-    public static event Action OnBossDamagedPlayer;
+    public static event Action<int> OnMidOrFinalBossDamagedPlayer;
     public static event Action<EnemyState> OnBossStateChanged;
     public static event Action<int,int> OnEnemyDestroyed;
+    public static event Action OnMidBossDestroyed;
     public static event Action OnFinalBossDestroyed;
-    public static event Action OnEnemyL1DamagedPlayer;
+    public static event Action<int> OnEnemyL1DamagedPlayer;
     public static event Action<bool> OnShootingStateChanged;
   
     private void OnEnable()
@@ -52,7 +52,6 @@ public class Enemy : MonoBehaviour
 
     protected virtual void SetInitialValues()
     {
-        gameManager = GameManager.Instance;
         animController = GetComponent<Animator>();
         OnShootingStateChanged?.Invoke(true);
         CheckBossTag();
@@ -125,7 +124,13 @@ public class Enemy : MonoBehaviour
     {
         DisableComponents();
         
-        if(isEnemyLevel1 || isMidBoss) OnEnemyDestroyed?.Invoke(1,SetScorePoints());
+        if(isEnemyLevel1) OnEnemyDestroyed?.Invoke(1,SetScorePoints());
+
+        if (isMidBoss)
+        {
+            OnEnemyDestroyed?.Invoke(1,SetScorePoints());
+            OnMidBossDestroyed?.Invoke();
+        }
         else if (isFinalBoss)
         {
             OnEnemyDestroyed?.Invoke(1,SetScorePoints());
@@ -151,13 +156,12 @@ public class Enemy : MonoBehaviour
         {
             var player = other.GetComponent<Player>();
 
-            if (player != null)
-            {
-                if (isEnemyLevel1) OnEnemyL1DamagedPlayer?.Invoke();
-                else if (isMidBoss || isFinalBoss) OnBossDamagedPlayer?.Invoke();
+            if (player == null) return;
+            
+            if (isEnemyLevel1) OnEnemyL1DamagedPlayer?.Invoke(1);
+            else if (isMidBoss || isFinalBoss) OnMidOrFinalBossDamagedPlayer?.Invoke(2);
 
-                Damage();
-            }
+            Damage();
         }
         else if (other.gameObject.name == "LeftCollider") EnemyDestroyed();
     }

@@ -25,27 +25,31 @@ public class Weapons : MonoBehaviour
         foreach (var laserPos in weaponsPositions) laserPos.SetActive(false);
     }
 
-    protected void IncreaseWeapons()
+    protected void IncreaseWeapons(int value)
     {
-        weaponsIndex++;
+        weaponsIndex += value;
+
         if (weaponsIndex > maxWeaponsIndex)
         {
             weaponsIndex = maxWeaponsIndex;
+            Debug.Log("weapons added but max value exceeded");
             return;
         }
-        
+
         UpdateWeaponPositions(weaponsIndex);
     }
 
-    protected void DecreaseWeapons()
+    protected void DecreaseWeapons(int value)
     {
-        weaponsIndex--;
+        weaponsIndex -= value;
+
         if (weaponsIndex < minWeaponsIndex)
         {
             weaponsIndex = minWeaponsIndex;
+            Debug.Log("weapons added but wrong min value");
             return;
         }
-        
+
         UpdateWeaponPositions(weaponsIndex);
     }
 
@@ -73,10 +77,7 @@ public class Weapons : MonoBehaviour
 
     protected void SetCooldown()
     {
-        if (Time.time > timeForNextShoot)
-        {
-            timeForNextShoot = Time.time + shootCooldown;
-        }
+        if (Time.time > timeForNextShoot) { timeForNextShoot = Time.time + shootCooldown; }
     }
 
     protected virtual void FireWeapons()

@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class LaserEnemy : MonoBehaviour
 {
+    [SerializeField] private int laserDamage;
     [SerializeField] private float speed;
     [SerializeField] private Transform laserParent;
 
-    public static event Action OnPlayerDamaged;
+    public static event Action<int> OnPlayerDamaged;
     
     private void Start()
     {
@@ -24,7 +25,7 @@ public class LaserEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            OnPlayerDamaged?.Invoke();
+            OnPlayerDamaged?.Invoke(laserDamage);
             Destroy(gameObject);
         }
         else if (other.CompareTag("Laser"))

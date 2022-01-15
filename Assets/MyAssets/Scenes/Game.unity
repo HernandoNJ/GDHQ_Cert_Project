@@ -513,9 +513,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 458293280, guid: 72de564563f425c4b97642d367e2e19f, type: 3}
+      propertyPath: powerupPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2651218517599181067, guid: 72de564563f425c4b97642d367e2e19f, type: 3}
       propertyPath: m_Name
       value: MidBoss
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651218517599181067, guid: 72de564563f425c4b97642d367e2e19f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5029748300799890977, guid: 72de564563f425c4b97642d367e2e19f, type: 3}
       propertyPath: m_RootOrder
@@ -1798,6 +1806,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  enemiesCount: 0
+  score: 0
+  currentDifficulty: 0
+  difficultyLevel: 
+  isGameOver: 0
 --- !u!1 &1721293161
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,20 +7,27 @@ public class PlayerWeapons : Weapons
     private void OnEnable()
     {
         Player.OnPlayerShooting += FireWeapons;
-        Powerup.OnPowerupGot += IncreaseWeapons;
+        Player.OnAddWeapons += IncreaseWeapons;
+        Player.OnReduceWeapons += DecreaseWeapons;
         LaserEnemy.OnPlayerDamaged += DecreaseWeapons;
         Enemy.OnEnemyL1DamagedPlayer += DecreaseWeapons;
-        Enemy.OnBossDamagedPlayer += DecreaseWeapons;
+        Enemy.OnMidOrFinalBossDamagedPlayer += DecreaseWeapons;
         EnemiesSpawner.OnBossWaveStarted += SetBossCooldown;
+    }
+
+    private void ReduceWeapons(int obj)
+    {
+        throw new System.NotImplementedException();
     }
 
     private void OnDisable()
     {
         Player.OnPlayerShooting -= FireWeapons;
-        Powerup.OnPowerupGot -= IncreaseWeapons;
+        Player.OnAddWeapons -= IncreaseWeapons;
+        Player.OnReduceWeapons -= DecreaseWeapons;
         LaserEnemy.OnPlayerDamaged -= DecreaseWeapons;
         Enemy.OnEnemyL1DamagedPlayer -= DecreaseWeapons;
-        Enemy.OnBossDamagedPlayer -= DecreaseWeapons;
+        Enemy.OnMidOrFinalBossDamagedPlayer -= DecreaseWeapons;
         EnemiesSpawner.OnBossWaveStarted += SetBossCooldown;
     }
 
