@@ -18,6 +18,8 @@ public class SpawnManager : MonoBehaviour
     private bool isPlayerAlive = true;
     private bool isWaveRunning;
 
+    // todo check waves
+    
     private void Start()
     {
         waveNumber = 1;
@@ -32,6 +34,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
+    // todo check
     public void DecreaseEnemiesAmount()
     {
         enemiesAmount--;

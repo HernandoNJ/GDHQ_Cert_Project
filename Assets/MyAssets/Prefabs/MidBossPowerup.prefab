@@ -187,3 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e84ae7eaa068ed488d91115023795f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthIncrement: 10
+  weaponIncrement: 2
+  forceDirection: {x: -1, y: 0}
+  rb: {fileID: 0}
+  moveEnabled: 1

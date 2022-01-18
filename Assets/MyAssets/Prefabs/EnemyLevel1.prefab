@@ -23,13 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440467542}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2509537387189819464}
-  m_RootOrder: 4
+  m_Father: {fileID: 7203427611418951387}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2037118896
 GameObject:
@@ -54,14 +54,74 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037118896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2509537387189819464}
-  m_RootOrder: 3
+  m_Father: {fileID: 7203427611418951387}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5491907860860377928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7203427611418951387}
+  - component: {fileID: 7445101716599924524}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7203427611418951387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491907860860377928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4906328419655512316}
+  - {fileID: 2037118897}
+  - {fileID: 1440467543}
+  m_Father: {fileID: 2509537387189819464}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7445101716599924524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5491907860860377928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30198c3bca4fe024f9552f3d1b6946f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsPositions:
+  - {fileID: 8171441062501316933}
+  - {fileID: 2037118896}
+  - {fileID: 1440467542}
+  weaponsPrefabs:
+  - {fileID: 4355739381196178677, guid: 8fb739c86d8b4c44dadda5efc58b4448, type: 3}
+  weaponsIndex: 0
+  minWeaponsIndex: 0
+  maxWeaponsIndex: 2
+  shootCooldown: 1
+  timeForNextShoot: 0
+  shootEnabled: 0
+  waitForShooting: 3
 --- !u!1 &5866453540197556946
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,10 +136,9 @@ GameObject:
   - component: {fileID: 9149572146746636618}
   - component: {fileID: 5842323691674755026}
   - component: {fileID: 8636178490736331265}
-  - component: {fileID: 2211144142934281148}
   m_Layer: 0
   m_Name: EnemyLevel1
-  m_TagString: Enemy
+  m_TagString: EnemyLevel1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,9 +157,7 @@ Transform:
   m_Children:
   - {fileID: 1825661957552831259}
   - {fileID: 4038617600816164334}
-  - {fileID: 4906328419655512316}
-  - {fileID: 2037118897}
-  - {fileID: 1440467543}
+  - {fileID: 7203427611418951387}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,44 +336,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ecab8292370f841b6d281e07441bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animTriggerIndex: 0
   isVulnerable: 0
-  isEnemyLevel1: 0
-  isMidBoss: 0
-  isFinalBoss: 0
-  hasPowerup: 0
   health: 0
+  isEnemyLevel1: 0
+  enemyL1ScorePoints: 0
+  isMidBoss: 0
+  midBossScorePoints: 0
+  isFinalBoss: 0
+  finalBossScorePoints: 0
   explosionPrefab: {fileID: 1280330470263330433, guid: 668b3aa43136fc14a81ce64606d1a894, type: 3}
   powerupPrefab: {fileID: 4362133406018039002, guid: 652e79e4cd9384f438dd87b4ccb22ac2, type: 3}
   shield: {fileID: 9118480091947004882}
   animController: {fileID: 0}
-  shieldColor: {r: 0, g: 0, b: 0, a: 0}
-  enemiesSpawner: {fileID: 0}
-  gameManager: {fileID: 0}
---- !u!114 &2211144142934281148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5866453540197556946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30198c3bca4fe024f9552f3d1b6946f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponsPositions:
-  - {fileID: 8171441062501316933}
-  - {fileID: 2037118896}
-  - {fileID: 1440467542}
-  weaponsPrefabs:
-  - {fileID: 4355739381196178677, guid: 8fb739c86d8b4c44dadda5efc58b4448, type: 3}
-  weaponsIndex: 0
-  minWeaponsIndex: 0
-  maxWeaponsIndex: 0
-  shootCooldown: 1
-  timeForNextShoot: 0
-  shootEnabled: 0
+  enemiesSpawnerGO: {fileID: 0}
+  hasPowerup: 0
+  animTriggerIndex: 0
 --- !u!1 &7623994433814070565
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,13 +458,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8171441062501316933}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2509537387189819464}
-  m_RootOrder: 2
+  m_Father: {fileID: 7203427611418951387}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9118480091947004882
 GameObject:

@@ -23,21 +23,25 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
+        EnemiesSpawner.OnEnemyL1WaveStarted += EnemyL1WaveStarted;
+        EnemiesSpawner.OnMidBossWaveStarted += MidBossWaveStarted;
+        EnemiesSpawner.OnFinalBossWaveStarted += FinalBossWaveStarted;
         Enemy.OnEnemyL1DamagedPlayer += PlayerDamaged;
         Enemy.OnMidOrFinalBossDamagedPlayer += MidOrFinalBossDamagedPlayer;
         Enemy.OnMidBossDestroyed += EnemyL1WaveStarted;
         LaserEnemy.OnPlayerDamaged += PlayerDamaged;
-        MidBoss.OnMidBossWaveStarted += MidBossWaveStarted;
         Powerup.OnPowerupGot += PowerupGot;
     }
 
     private void OnDisable()
     {
+        EnemiesSpawner.OnEnemyL1WaveStarted -= EnemyL1WaveStarted;
+        EnemiesSpawner.OnMidBossWaveStarted -= MidBossWaveStarted;
+        EnemiesSpawner.OnFinalBossWaveStarted -= FinalBossWaveStarted;
         Enemy.OnEnemyL1DamagedPlayer -= PlayerDamaged;
         Enemy.OnMidOrFinalBossDamagedPlayer -= MidOrFinalBossDamagedPlayer;
         Enemy.OnMidBossDestroyed -= EnemyL1WaveStarted;
         LaserEnemy.OnPlayerDamaged -= PlayerDamaged;
-        MidBoss.OnMidBossWaveStarted -= MidBossWaveStarted;
         Powerup.OnPowerupGot -= PowerupGot;
     }
 
