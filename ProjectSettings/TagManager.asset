@@ -4,14 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Laser
   - Outbound
-  - ActivateEnemies
-  - Enemy
+  - Laser
   - MidBoss
+  - EnemyLevel1
   - FinalBoss
   - EnemyLaser
-  - EnemyLevel1
+  - Enemy
+  - PlayerLaser
   layers:
   - Default
   - TransparentFX

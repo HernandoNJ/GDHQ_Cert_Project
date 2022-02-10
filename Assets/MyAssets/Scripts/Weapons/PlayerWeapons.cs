@@ -5,6 +5,8 @@ public class PlayerWeapons : Weapons
     [SerializeField] private float fastShooting;
     [SerializeField] private float fastestShooting;
     
+    // todo check why lasers are destroyed
+    
     private void OnEnable()
     {
         Player.OnPlayerShooting += FireWeapons;
@@ -38,7 +40,7 @@ public class PlayerWeapons : Weapons
         {
             if (laserPos.activeInHierarchy)
             {
-                GameObject laser = LaserPool.sharedInstance.GetPooledLaser();
+                GameObject laser = LaserPool.instance.GetPooledLaser();
 
                 laser.transform.position = laserPos.transform.position;
                 laser.transform.rotation = laserPos.transform.rotation;

@@ -88,9 +88,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void PowerupGot(int livesAdd, int weaponsAdd)
+    private void PowerupGot(int weaponsAdd)
     {
-        SetPlayerLives(livesAdd);
         OnAddWeapons?.Invoke(weaponsAdd);
     }
 

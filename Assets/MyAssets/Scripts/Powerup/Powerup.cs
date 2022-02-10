@@ -3,35 +3,31 @@ using UnityEngine;
 
 public class Powerup : MonoBehaviour
 {
-    [SerializeField] private int healthIncrement;
     [SerializeField] private int weaponIncrement;
     [SerializeField] private float speed;
+    [SerializeField] private float timeToDestroy;
     [SerializeField] private Vector2 moveDirection;
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private bool moveEnabled;
-
-    public static event Action<int,int> OnPowerupGot;
+    public AudioClip powerupSound;
+    
+    public static event Action<int> OnPowerupGot;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        Destroy(gameObject, 3.0f);
+        Destroy(gameObject, timeToDestroy);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (!moveEnabled) return;
-        rb.AddForceAtPosition(moveDirection * speed,transform.position,ForceMode2D.Force);
+        transform.Translate(moveDirection * speed * Time.deltaTime);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
-        OnPowerupGot?.Invoke(healthIncrement,weaponIncrement);
+        OnPowerupGot?.Invoke(weaponIncrement);
+        AudioSource.PlayClipAtPoint(powerupSound,transform.position);
         Destroy(gameObject);
     }
     
-    public void SetHealthIncrement(int value) => healthIncrement = value;
     public void SetWeaponIncrement(int value) => weaponIncrement = value;
-    public void SetMoveEnabled(bool value) => moveEnabled = value;
 }

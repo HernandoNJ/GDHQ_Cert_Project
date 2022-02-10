@@ -11,13 +11,13 @@ public class LaserPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("MidBoss") || other.CompareTag("FinalBoss"))
+        if (other.CompareTag("EnemyLevel1") || 
+            other.CompareTag("MidBoss") || 
+            other.CompareTag("FinalBoss") ||
+            other.CompareTag("Outbound"))
         {
-            Debug.Log("hitting enemy");
-            var enemy = other.GetComponent<Enemy>();
-            if(enemy != null) enemy.LaserDamagedEnemy();
+            Debug.Log("Laser player hit: " + other.gameObject.name);
             gameObject.SetActive(false);
         }
-        else if (other.gameObject.name == "RightCollider") gameObject.SetActive(false);
     }
 }

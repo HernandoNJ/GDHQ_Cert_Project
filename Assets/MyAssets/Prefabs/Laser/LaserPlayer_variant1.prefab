@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 3028203865858089070}
   - component: {fileID: 4099613359656705542}
   - component: {fileID: 6983771183091362720}
-  - component: {fileID: 8067187648938287171}
-  m_Layer: 14
-  m_Name: LaserPlayer2
-  m_TagString: Laser
+  m_Layer: 0
+  m_Name: LaserPlayer_variant1
+  m_TagString: PlayerLaser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +74,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: db071cda483542941b78b790d311d25a, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.07
-  m_Pitch: 1.4
+  m_Volume: 0.02
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -172,27 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
---- !u!50 &8067187648938287171
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6965500673124934863}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &7435504868695819106
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +266,7 @@ GameObject:
   - component: {fileID: 9217832471344148197}
   - component: {fileID: 6153817195185798764}
   - component: {fileID: 7404510257607385250}
-  m_Layer: 14
+  m_Layer: 0
   m_Name: ShotModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

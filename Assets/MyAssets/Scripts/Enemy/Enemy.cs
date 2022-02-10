@@ -10,24 +10,25 @@ public class Enemy : MonoBehaviour
         Bad
     }
     
-    [SerializeField] protected bool isVulnerable;
     [SerializeField] protected int health;
+    [SerializeField] protected int scorePoints;
+    [SerializeField] private float shootingDelay;
+    [SerializeField] private float vulnerableDelay;
+    [SerializeField] protected bool isVulnerable;
+    [SerializeField] protected bool hasPowerup;
     [SerializeField] protected bool isEnemyLevel1;
-    [SerializeField] protected int enemyL1ScorePoints;
     [SerializeField] protected bool isMidBoss;
-    [SerializeField] protected int midBossScorePoints;
     [SerializeField] protected bool isFinalBoss;
-    [SerializeField] protected int finalBossScorePoints;
     
     [SerializeField] protected GameObject explosionPrefab;
     [SerializeField] protected GameObject powerupPrefab;
     [SerializeField] protected GameObject shield;
     [SerializeField] protected Animator animController;
-    [SerializeField] protected EnemiesSpawner enemiesSpawnerGO;
-
+    
     public static event Action<int> OnMidOrFinalBossDamagedPlayer;
     public static event Action<EnemyState> OnBossStateChanged;
     public static event Action<int> OnEnemyDestroyed;
+    public static event Action OnEnemyL1Destroyed;
     public static event Action OnMidBossDestroyed;
     public static event Action OnFinalBossDestroyed;
     public static event Action<int> OnEnemyL1DamagedPlayer;
@@ -37,7 +38,6 @@ public class Enemy : MonoBehaviour
     
     private void OnEnable()
     {
-        enemiesSpawnerGO = FindObjectOfType<EnemiesSpawner>();
         GameManager.OnGameOver += StopShooting;
     }
 
@@ -55,11 +55,20 @@ public class Enemy : MonoBehaviour
     protected virtual void SetInitialValues()
     {
         animController = GetComponent<Animator>();
-        StartShooting();
-        CheckBossTag();
+        SetBoolVariables(false);
+        CheckEnemyTag();
+        Invoke(nameof(StartShooting),shootingDelay);
+        Invoke(nameof(SetVulnerable),vulnerableDelay);
     }
 
-    private void CheckBossTag()
+    private void SetBoolVariables(bool boolArg)
+    {
+        isVulnerable = boolArg;
+        shield.gameObject.SetActive(boolArg);
+        explosionPrefab.SetActive(boolArg);
+    }
+
+    private void CheckEnemyTag()
     {
         if (gameObject.CompareTag("EnemyLevel1")) isEnemyLevel1 = true;
         else if (gameObject.CompareTag("MidBoss")) isMidBoss = true;
@@ -67,10 +76,7 @@ public class Enemy : MonoBehaviour
         else Debug.LogWarning("Set a valid enemy tag");
     }
     
-    protected void SetEnemyVulnerable(bool isVulnerableArg)
-    {
-        isVulnerable = isVulnerableArg;
-    }
+    private void SetVulnerable() => isVulnerable = true;
     
     protected void UpdateBossState(EnemyState enemyStateArg)
     {
@@ -98,7 +104,7 @@ public class Enemy : MonoBehaviour
         OnBossStateChanged?.Invoke(enemyStateValue);
     }
     
-    protected virtual void Damage()
+    protected void Damage()
     {
         if (isVulnerable == false) return;
         health--;
@@ -112,36 +118,26 @@ public class Enemy : MonoBehaviour
                 else if (health < 10) UpdateBossState(EnemyState.Bad);
             }
         }
-        else
-        {
-            EnemyDestroyed();
-            OnEnemyDestroyed?.Invoke(SetScorePoints());
-            if(isFinalBoss) OnFinalBossDestroyed?.Invoke();
-        }
+        else EnemyDestroyed();
     }
-
-    public void LaserDamagedEnemy() => Damage();
 
     protected void EnemyDestroyed()
     {
+        CheckIfHasPowerup();
         DisableComponents();
         
-        if(isEnemyLevel1) OnEnemyDestroyed?.Invoke(SetScorePoints()); // todo modify when enemy collides with obstacle or with player laser
-
-        if (isMidBoss)
-        {
-            OnEnemyDestroyed?.Invoke(SetScorePoints());
-            OnMidBossDestroyed?.Invoke();
-        }
-        else if (isFinalBoss)
-        {
-            OnEnemyDestroyed?.Invoke(SetScorePoints());
-            OnFinalBossDestroyed?.Invoke();
-        }
+        if (isEnemyLevel1) OnEnemyL1Destroyed?.Invoke();
+        else if (isMidBoss) OnMidBossDestroyed?.Invoke();
+        else if (isFinalBoss) OnFinalBossDestroyed?.Invoke();
         
-        var explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        Destroy(explosion, 0.5f);
-        Destroy(gameObject, 0.7f);
+        OnEnemyDestroyed?.Invoke(GetScorePoints()); // todo modify when enemy collides with obstacle or with player laser
+        explosionPrefab.SetActive(true);
+        Destroy(gameObject, 1f);
+    }
+
+    private void CheckIfHasPowerup()
+    {
+        if (hasPowerup) Instantiate(powerupPrefab, transform.position, Quaternion.identity);
     }
 
     private void DisableComponents()
@@ -152,29 +148,23 @@ public class Enemy : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        // Enemy collides with the player
         if (other.CompareTag("Player"))
         {
-            var player = other.GetComponent<Player>();
-
-            if (player == null) return;
-            
             if (isEnemyLevel1) OnEnemyL1DamagedPlayer?.Invoke(1);
             else if (isMidBoss || isFinalBoss) OnMidOrFinalBossDamagedPlayer?.Invoke(2);
-
             Damage();
         }
+        else if (other.CompareTag("Outbound") || other.CompareTag("PlayerLaser"))
+        {
+            Debug.Log("enemy hit: " + other.gameObject.name);
+            Damage();
+        } 
     }
     
-    private int SetScorePoints()
-    {
-        var scorePoints = 0;
-        if (isEnemyLevel1) scorePoints =  enemyL1ScorePoints;
-        if (isMidBoss) scorePoints = midBossScorePoints;
-        if (isFinalBoss) scorePoints = finalBossScorePoints;
-        return scorePoints;
-    }
+    private int GetScorePoints() => scorePoints;
 
     private void StartShooting() => EnemyShoot(true);
     private void StopShooting() => EnemyShoot(false);

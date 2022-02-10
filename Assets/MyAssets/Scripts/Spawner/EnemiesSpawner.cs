@@ -16,12 +16,14 @@ public class EnemiesSpawner : MonoBehaviour
 
     [Header(" ")]
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private Vector2 enemyStartPos;
+    [SerializeField] private GameObject spawnPosition;
 
     [SerializeField] private int maxEnemies;
     [SerializeField] private int currentEnemies;
     [SerializeField] private bool spawnEnabled;
 
+    private Vector2 startPosition;
+    
     public static event Action OnEnemyL1WaveStarted;
     public static event Action OnMidBossWaveStarted;
     public static event Action OnFinalBossWaveStarted;
@@ -43,6 +45,7 @@ public class EnemiesSpawner : MonoBehaviour
 
     private void Start()
     {
+        startPosition = spawnPosition.transform.position;
         nextWave = minWaveIndex;
         EnableSpawning();
     }
@@ -94,7 +97,7 @@ public class EnemiesSpawner : MonoBehaviour
 
         while (currentEnemies < maxEnemies && spawnEnabled)
         {
-            Instantiate(enemyPrefab, enemyStartPos, quaternion.identity);
+            Instantiate(enemyPrefab, startPosition, quaternion.identity);
             IncreaseEnemiesAmount();
             yield return new WaitForSeconds(1);
         }

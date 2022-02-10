@@ -3,12 +3,14 @@ using UnityEngine;
 public class MidBoss : Enemy
 {
     [SerializeField] private GameObject midBossPowerup;
-    
+
     // TODO powerup
+    // Increase lives and weapons when boss wave starts
+    // Get previous values when wave finishes
     // Check waves 
+
     protected override void SetInitialValues()
     {
-        health = 50;
         isMidBoss = true;
         isVulnerable = false;
         animController = GetComponent<Animator>(); // modify based on state
@@ -18,22 +20,9 @@ public class MidBoss : Enemy
         animController.Play("midBossGood");
         Invoke(nameof(EnemyVulnerable), 1f);
 
-        SetPowerupValues();
-        
         UpdateBossState(EnemyState.Good);
-        
-        
-    }
-
-    private void SetPowerupValues()
-    {
-        var powerup = powerupPrefab.GetComponent<Powerup>();
-        powerup.SetHealthIncrement(10);
-        powerup.SetWeaponIncrement(2);
-        powerup.SetMoveEnabled(true);
     }
 
     private void EnemyVulnerable() => isVulnerable = true;
 
-    
 }

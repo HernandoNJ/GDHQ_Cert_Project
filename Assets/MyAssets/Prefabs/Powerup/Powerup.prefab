@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dc7f1e4b4ce8b034fb3e38abed3d933f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39607844}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -122,9 +122,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthIncrement: 1
   weaponIncrement: 1
-  forceDirection: {x: 0, y: 0}
-  rb: {fileID: 0}
-  moveEnabled: 0
+  speed: 2
+  timeToDestroy: 5
+  moveDirection: {x: -1, y: 0}
+  powerupSound: {fileID: 8300000, guid: a01b5380b7fdebf46a7b02b0fc7e9006, type: 3}
 --- !u!60 &4720747915646830821
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -185,8 +186,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

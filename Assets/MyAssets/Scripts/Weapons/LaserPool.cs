@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LaserPool : MonoBehaviour
 {
-    public static LaserPool sharedInstance;
+    public static LaserPool instance;
     public List<GameObject> pooledLasers;
     public GameObject laserPrefab;
     public GameObject lasersParent;    
@@ -11,16 +11,16 @@ public class LaserPool : MonoBehaviour
 
     private void Awake()
     {
-        sharedInstance = this;
+        instance = this;
     }
 
     private void Start()
     {
         pooledLasers = new List<GameObject>();
-        SetNewLasers();
+        PoolNewLasers();
     }
 
-    private void SetNewLasers()
+    private void PoolNewLasers()
     {
         for (int i = 0; i < lasersPoolAmount; i++)
         {
@@ -37,7 +37,9 @@ public class LaserPool : MonoBehaviour
             if (!pooledLasers[i].activeInHierarchy) return pooledLasers[i];
             if(pooledLasers[i] == null) Debug.LogWarning("Laser pool is null");
         }
-        
+    
+        Debug.Log("out of for loop in get pooled laser"); // todo possibly they're destroying themselves when shooting
+        Debug.Break();
         return null;
     }
 }
