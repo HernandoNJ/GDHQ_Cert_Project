@@ -1,67 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1440467542
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1440467543}
-  m_Layer: 0
-  m_Name: FirePoint_3
-  m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1440467543
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440467542}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7203427611418951387}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2037118896
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2037118897}
-  m_Layer: 0
-  m_Name: FirePoint_2
-  m_TagString: Untagged
-  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2037118897
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037118896}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7203427611418951387}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5491907860860377928
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,8 +30,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4906328419655512316}
-  - {fileID: 2037118897}
-  - {fileID: 1440467543}
   m_Father: {fileID: 2509537387189819464}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -111,14 +47,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponsPositions:
   - {fileID: 8171441062501316933}
-  - {fileID: 2037118896}
-  - {fileID: 1440467542}
   weaponsPrefabs:
   - {fileID: 4355739381196178677, guid: 8fb739c86d8b4c44dadda5efc58b4448, type: 3}
   weaponsIndex: 0
   minWeaponsIndex: 0
-  maxWeaponsIndex: 2
-  shootCooldown: 0.5
+  maxWeaponsIndex: 0
+  shootCooldown: 0.75
   timeForNextShoot: 0
   shootEnabled: 0
   waitForShooting: 0.7
@@ -141,7 +75,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2509537387189819464
 Transform:
   m_ObjectHideFlags: 0
@@ -242,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   scorePoints: 1
-  shootingDelay: 5
+  shootingDelay: 1
   vulnerableDelay: 1.5
   isVulnerable: 0
   hasPowerup: 1
@@ -253,7 +187,6 @@ MonoBehaviour:
   powerupPrefab: {fileID: 4362133406018039002, guid: 652e79e4cd9384f438dd87b4ccb22ac2, type: 3}
   shield: {fileID: 9118480091947004882}
   animController: {fileID: 0}
-  enemiesSpawnerGO: {fileID: 0}
   animTriggerIndex: 1
 --- !u!1 &7623994433814070565
 GameObject:

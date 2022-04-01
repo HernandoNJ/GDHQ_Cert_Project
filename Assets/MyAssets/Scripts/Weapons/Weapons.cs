@@ -66,6 +66,8 @@ public class Weapons : MonoBehaviour
 
     protected void UpdateWeaponPositions(int indexArg)
     {
+        if (weaponsPositions.Length == 1) return;
+        
         switch (indexArg)
         {
             case 0:

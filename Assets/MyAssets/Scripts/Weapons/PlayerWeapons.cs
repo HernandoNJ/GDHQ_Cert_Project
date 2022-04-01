@@ -12,7 +12,7 @@ public class PlayerWeapons : Weapons
         Player.OnPlayerShooting += FireWeapons;
         Player.OnAddWeapons += IncreaseWeapons;
         Player.OnReduceWeapons += DecreaseWeapons;
-        LaserEnemy.OnPlayerDamaged += DecreaseWeapons;
+        LaserEnemy.EnemyLaserDamagedPlayer += DecreaseWeapons;
         Enemy.OnEnemyL1DamagedPlayer += DecreaseWeapons;
         Enemy.OnMidOrFinalBossDamagedPlayer += DecreaseWeapons;
         EnemiesSpawner.OnMidBossWaveStarted += SetMidBossCooldown;
@@ -23,7 +23,7 @@ public class PlayerWeapons : Weapons
         Player.OnPlayerShooting -= FireWeapons;
         Player.OnAddWeapons -= IncreaseWeapons;
         Player.OnReduceWeapons -= DecreaseWeapons;
-        LaserEnemy.OnPlayerDamaged -= DecreaseWeapons;
+        LaserEnemy.EnemyLaserDamagedPlayer -= DecreaseWeapons;
         Enemy.OnEnemyL1DamagedPlayer -= DecreaseWeapons;
         Enemy.OnMidOrFinalBossDamagedPlayer -= DecreaseWeapons;
         EnemiesSpawner.OnMidBossWaveStarted += SetMidBossCooldown;

@@ -3,16 +3,22 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Tooltip("Increased in each wave")]
     [SerializeField] private float speed;
-    [SerializeField] private int currentLives = 1;
-    [SerializeField] private int maxLives = 1;
-    [SerializeField] private int enemyL1WaveMaxLives;
-    [SerializeField] private int midBossWaveMaxLives;
-    [SerializeField] private int finalBossWaveMaxLives;
+    [SerializeField] private int currentLives;
+    [SerializeField] private int maxLives;
     [SerializeField] private Vector2 startPosition;
-    [SerializeField] private bool enemyL1Active;
-    [SerializeField] private bool midBossActive; // todo for testing
-    [SerializeField] private bool finalBossActive; // todo for testing
+    [SerializeField] private bool l1Active; // Reduce weapons only if active
+
+    // Required for SetNewEnemyValues()
+    // L1: Enemy basic, L2: MidBoss, L3: FinalBoss
+    private const float SpeedL1 = 5f;
+    private const float SpeedL2 = 6f;
+    private const float SpeedL3 = 7.5f;
+    
+    private const int MaxLivesL1 = 3;
+    private const int MaxLivesL2 = 5;
+    private const int MaxLivesL3 = 7;
 
     private UIManager uiManager;
     private GameManager gameManager;
@@ -26,10 +32,10 @@ public class Player : MonoBehaviour
         EnemiesSpawner.OnEnemyL1WaveStarted += EnemyL1WaveStarted;
         EnemiesSpawner.OnMidBossWaveStarted += MidBossWaveStarted;
         EnemiesSpawner.OnFinalBossWaveStarted += FinalBossWaveStarted;
-        Enemy.OnEnemyL1DamagedPlayer += PlayerDamaged;
+        Enemy.OnEnemyL1DamagedPlayer += EnemyLaserDamagedPlayer;
         Enemy.OnMidOrFinalBossDamagedPlayer += MidOrFinalBossDamagedPlayer;
         Enemy.OnMidBossDestroyed += EnemyL1WaveStarted;
-        LaserEnemy.OnPlayerDamaged += PlayerDamaged;
+        LaserEnemy.EnemyLaserDamagedPlayer += EnemyLaserDamagedPlayer;
         Powerup.OnPowerupGot += PowerupGot;
     }
 
@@ -38,10 +44,10 @@ public class Player : MonoBehaviour
         EnemiesSpawner.OnEnemyL1WaveStarted -= EnemyL1WaveStarted;
         EnemiesSpawner.OnMidBossWaveStarted -= MidBossWaveStarted;
         EnemiesSpawner.OnFinalBossWaveStarted -= FinalBossWaveStarted;
-        Enemy.OnEnemyL1DamagedPlayer -= PlayerDamaged;
+        Enemy.OnEnemyL1DamagedPlayer -= EnemyLaserDamagedPlayer;
         Enemy.OnMidOrFinalBossDamagedPlayer -= MidOrFinalBossDamagedPlayer;
         Enemy.OnMidBossDestroyed -= EnemyL1WaveStarted;
-        LaserEnemy.OnPlayerDamaged -= PlayerDamaged;
+        LaserEnemy.EnemyLaserDamagedPlayer -= EnemyLaserDamagedPlayer;
         Powerup.OnPowerupGot -= PowerupGot;
     }
 
@@ -66,7 +72,7 @@ public class Player : MonoBehaviour
         var moveVH = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         transform.position = new Vector2(Mathf.Clamp(xPos, -7.5f, 5), Mathf.Clamp(yPos, -2.5f, 4.3f));
-        transform.Translate(moveVH.normalized * speed * Time.deltaTime);
+        transform.Translate(moveVH.normalized * (speed * Time.deltaTime));
     }
 
     private void Shoot() => OnPlayerShooting?.Invoke();
@@ -95,21 +101,13 @@ public class Player : MonoBehaviour
 
     private void EnemyL1WaveStarted()
     {
-        enemyL1Active = true;
-        SetNewEnemyValues(5f, enemyL1WaveMaxLives);
+        l1Active = true;
+        SetNewEnemyValues(SpeedL1, MaxLivesL1);
     }
 
-    private void MidBossWaveStarted()
-    {
-        midBossActive = true;
-        SetNewEnemyValues(7f, midBossWaveMaxLives);
-    }
+    private void MidBossWaveStarted() => SetNewEnemyValues(SpeedL2, MaxLivesL2);
 
-    private void FinalBossWaveStarted()
-    {
-        finalBossActive = true;
-        SetNewEnemyValues(10f, finalBossWaveMaxLives);
-    }
+    private void FinalBossWaveStarted() => SetNewEnemyValues(SpeedL3, MaxLivesL3);
 
     private void SetNewEnemyValues(float speedArg, int maxLivesArg)
     {
@@ -118,17 +116,13 @@ public class Player : MonoBehaviour
         currentLives = maxLives;
     }
 
-    private void PlayerDamaged(int value)
+    private void EnemyLaserDamagedPlayer(int value)
     {
         SetPlayerLives(-value);
         CheckIfPlayerDestroyed();
         
-        if(enemyL1Active) OnReduceWeapons?.Invoke(1);
+        if(l1Active) OnReduceWeapons?.Invoke(1);
     }
 
-    private void MidOrFinalBossDamagedPlayer(int value)
-    {
-        SetPlayerLives(-value);
-        Debug.Log("Boss damaged Player x 2");
-    }
+    private void MidOrFinalBossDamagedPlayer(int value) => SetPlayerLives(-value);
 }

@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2555797711065394600}
   - component: {fileID: 2555797711065394597}
   - component: {fileID: 2555797711065394596}
-  - component: {fileID: 2555797711065394599}
+  - component: {fileID: 3113064212296165005}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -125,14 +125,14 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2555797711065394599
+--- !u!114 &3113064212296165005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,11 +144,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9edb1bbc403be408b0546ece5ab808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8.5
-  playerLives: 20
-  maxPlayerLives: 50
-  startPosition: {x: -7, y: 0}
-  scoreToUpdate: 0
+  speed: 0
+  currentLives: 1
+  maxLives: 20
+  maxLivesWaveL1: 3
+  maxLivesMidBossWave: 5
+  maxLivesFinalBossWave: 5
+  enemyL1Active: 0
+  midBossActive: 0
+  finalBossActive: 0
+  startPosition: {x: 0, y: 0}
 --- !u!1 &2555797711162299085
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,9 +289,15 @@ MonoBehaviour:
   - {fileID: 2555797712070989212}
   - {fileID: 2555797712522970946}
   - {fileID: 2555797710847957085}
-  weaponsAmount: 0
-  maxWeapons: 3
-  shootCooldown: 0.05
+  weaponsPrefabs: []
+  weaponsIndex: 0
+  minWeaponsIndex: 0
+  maxWeaponsIndex: 2
+  shootCooldown: 0.3
+  timeForNextShoot: 0
+  shootEnabled: 0
+  fastShooting: 0
+  fastestShooting: 0
 --- !u!1 &2555797712070989212
 GameObject:
   m_ObjectHideFlags: 0

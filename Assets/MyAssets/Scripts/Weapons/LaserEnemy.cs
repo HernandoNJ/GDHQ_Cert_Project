@@ -7,7 +7,7 @@ public class LaserEnemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Transform laserParent;
 
-    public static event Action<int> OnPlayerDamaged;
+    public static event Action<int> EnemyLaserDamagedPlayer;
     
     private void Start()
     {
@@ -25,7 +25,7 @@ public class LaserEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            OnPlayerDamaged?.Invoke(laserDamage);
+            EnemyLaserDamagedPlayer?.Invoke(laserDamage);
             Destroy(gameObject);
         }
         else if (other.CompareTag("Laser"))
